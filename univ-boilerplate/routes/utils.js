@@ -9,7 +9,20 @@ function requireLogin(req, res, next) {
   
     next();
   }
+
+function requireAdmin(req, res, next) {
+  if(!req.user.isAdmin){
+    res.status(401)
+    next({
+      name: "AdminError",
+      message: "You must be an administrator to access this"
+    });
+  }
+
+  next();
+}
   
   module.exports = {
-    requireLogin
+    requireLogin,
+    requireAdmin,
   }
