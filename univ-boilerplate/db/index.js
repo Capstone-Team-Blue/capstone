@@ -83,13 +83,13 @@ async function createOrderProducts({orderId, productId}) {
 
 async function createUsersProducts({userId, productId, quantity}) {
   try{
-    const {rows: [userProducts]} = await client.query(`
+    const {rows: [usersProducts]} = await client.query(`
       INSERT INTO users_products("userId", "productId", quantity)
       VALUES ($1, $2, $3)
       RETURNING *;
     `, [userId, productId, quantity])
 
-    return userProducts
+    return usersProducts
 
   } catch(err){
     throw err
@@ -104,6 +104,6 @@ module.exports = {
   createOrder,
   createReview,
   createOrderProducts,
-  createUsersProducts
+  createUsersProducts,
   // db methods
 }
