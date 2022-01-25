@@ -6,7 +6,7 @@ const {
   createOrder,
   createReview,
   createOrderProducts,
-  createUserProducts
+  createUsersProducts
   // other db methods 
 } = require('./index');
 
@@ -152,7 +152,7 @@ async function populateInitialData() {
       {userId: 2, productId: 3}
     ]
 
-    const userProducts = await Promise.all(userProductsToCreate.map(createUserProducts))
+    const userProducts = await Promise.all(userProductsToCreate.map(createUsersProducts))
     console.log('user products created')
     console.log(userProducts)
     
