@@ -2,13 +2,13 @@
 const client = require('./client')
 
 //does not have its own js file yet
-async function createOrder({userId}){
+async function createOrder({userId, isCart}){
   try{
     const {rows: [order]} = await client.query(`
-      INSERT INTO orders("userId")
-      VALUES ($1)
+      INSERT INTO orders("userId", "isCart")
+      VALUES ($1, $2)
       RETURNING *;
-    `, [userId])
+    `, [userId, isCart])
 
     return order
 
@@ -34,13 +34,13 @@ async function createReview({productId, userId, rating, content}) {
 }
 
 //does not have its own js file yet
-async function createOrderProducts({orderId, productId}) {
+async function createOrderProducts({orderId, productId, quantity, unitCost}) {
   try{
     const {rows: [orderProducts]} = await client.query(`
-      INSERT INTO orders_products("orderId", "productId")
-      VALUES ($1, $2)
+      INSERT INTO orders_products("orderId", "productId", quantity, "unitCost")
+      VALUES ($1, $2, $3, $4)
       RETURNING *;
-    `, [orderId, productId])
+    `, [orderId, productId, quantity, unitCost])
 
     return orderProducts
 
@@ -57,6 +57,5 @@ module.exports = {
   createOrderProducts,
   ...require('./users'),
   ...require('./products'),
-  ...require('./users_products'),
   // db methods
 }

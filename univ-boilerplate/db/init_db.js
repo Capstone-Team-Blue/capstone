@@ -5,7 +5,6 @@ const {
   createOrder,
   createReview,
   createOrderProducts,
-  createUsersProducts
   // other db methods 
 } = require('./index');
 
@@ -19,7 +18,6 @@ async function buildTables() {
     console.log("dropping all tables...")
     try{
       await client.query(`
-        DROP TABLE IF EXISTS users_products;
         DROP TABLE IF EXISTS orders_products;
         DROP TABLE IF EXISTS reviews;
         DROP TABLE IF EXISTS orders;
@@ -48,7 +46,7 @@ async function buildTables() {
           CREATE TABLE products(
             id SERIAL PRIMARY KEY,
             name VARCHAR(255) NOT NULL,
-            price DECIMAL NOT NULL,
+            price INTEGER NOT NULL,
             description TEXT,
             image TEXT
           );
@@ -57,7 +55,8 @@ async function buildTables() {
       await client.query(`
             CREATE TABLE orders(
               id SERIAL PRIMARY KEY,
-              "userId" INTEGER REFERENCES users(id)
+              "userId" INTEGER REFERENCES users(id),
+              "isCart" BOOLEAN
             );
       `)
 
@@ -75,16 +74,9 @@ async function buildTables() {
             CREATE TABLE orders_products(
               id SERIAL PRIMARY KEY,
               "orderId" INTEGER REFERENCES orders(id),
-              "productId" INTEGER REFERENCES products(id)
-            );
-      `)
-
-      await client.query(`
-            CREATE TABLE users_products(
-              id SERIAL PRIMARY KEY,
-              "userId" INTEGER REFERENCES users(id),
               "productId" INTEGER REFERENCES products(id),
-              quantity INTEGER
+              quantity INTEGER,
+              "unitCost" INTEGER
             );
       `)
 
@@ -112,9 +104,9 @@ async function populateInitialData() {
     console.log('Finished creating users!');
 
     const productsToCreate = [
-      {name: 'car', price: '24.99', description: 'its a used car', image: 'google.com/car'},
-      {name: 'toy', price: '15', image: 'google.com/toy'},
-      {name: 'pancake', price: '11.50', description: 'its a pancake'}
+      {name: 'car', price: 2499, description: 'its a used car', image: 'google.com/car'},
+      {name: 'toy', price: 1499, image: 'google.com/toy'},
+      {name: 'pancake', price: 1150, description: 'its a pancake'}
     ]
 
     const products = await Promise.all(productsToCreate.map(createProduct))
@@ -123,8 +115,8 @@ async function populateInitialData() {
     console.log('finished creating products!')
 
     const ordersToCreate = [
-      {userId: 1},
-      {userId: 3}
+      {userId: 1, isCart: false},
+      {userId: 3, isCart: true}
     ]
 
     const orders = await Promise.all(ordersToCreate.map(createOrder))
@@ -142,22 +134,13 @@ async function populateInitialData() {
     console.log(reviews)
 
     const orderProductsToCreate = [
-      {orderId: 1, productId: 2},
-      {orderId: 2, productId: 3}
+      {orderId: 1, productId: 2, quantity: 5, unitCost: 1000},
+      {orderId: 2, productId: 3, quantity: 1, unitCost: 2000}
     ]
 
     const orderProducts = await Promise.all(orderProductsToCreate.map(createOrderProducts))
     console.log('order products created')
     console.log(orderProducts)
-
-    const userProductsToCreate = [
-      {userId: 1, productId: 2},
-      {userId: 2, productId: 3}
-    ]
-
-    const userProducts = await Promise.all(userProductsToCreate.map(createUsersProducts))
-    console.log('user products created')
-    console.log(userProducts)
     
   } catch (error) {
     throw error;
