@@ -2,7 +2,7 @@ const ordersProductsRouter = require('express').Router()
 const { createOrdersProducts, updateOrdersProducts, getOrdersProductsByOrderId, getOrdersProductsById, deleteOrdersProducts} = require('../db')
 const { requireLogin } = require('./utils')
 
-ordersProductsRouter.post('/', requireLogin, async(req, res, next) => {
+ordersProductsRouter.post('/create', requireLogin, async(req, res, next) => {
     const { orderId, productId, quantity, unitCost } = req.body
     try {
         const ordersProducts = await createOrdersProducts({orderId: orderId, productId: productId, quantity: quantity, unitCost: unitCost})
@@ -22,16 +22,16 @@ ordersProductsRouter.get('/:orderId', requireLogin, async(req, res, next) => {
     }
 })
 
-ordersProductsRouter.patch('/:orderId', requireLogin, async(req, res, next) => {
-    const { orderId } = req.params
-    const { productId, quantity, unitCost } = req.body
+ordersProductsRouter.patch('/:id', requireLogin, async(req, res, next) => {
+    const { id } = req.params
+    const { orderId, productId, quantity, unitCost } = req.body
     try {
-        const ordersProducts = await getOrdersProductsByOrderId(orderId)
+        const ordersProducts = await getOrdersProductsById(id)
         if (!ordersProducts) {
             res.status(401)
             next({
                 name: 'OrdersProductsNotFoundError',
-                message: 'no orders products found for that order id'
+                message: 'no orders products found for that id'
             })
         } else {
             if (req.user.id !== ordersProducts.userId) {
@@ -41,7 +41,7 @@ ordersProductsRouter.patch('/:orderId', requireLogin, async(req, res, next) => {
                     message: 'user id and user belonging to that orders products do not match'
                 })
             } else {
-                const updatedOrdersProducts = await updateOrdersProducts({orderId: orderId, productId: productId, quantity: quantity, unitCost: unitCost})
+                const updatedOrdersProducts = await updateOrdersProducts({id: id, orderId: orderId, productId: productId, quantity: quantity, unitCost: unitCost})
                 res.send(updatedOrdersProducts)
             }
         }

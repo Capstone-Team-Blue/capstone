@@ -4,14 +4,14 @@ const usersRouter = require('./users')
 //const productsRouter = require('./products')
 //const reviewsRouter = require('./reviews')
 //const ordersRouter = require('./orders')
-//const ordersProductsRouter = require('./orders_products')
+const ordersProductsRouter = require('./orders_products')
 
 const jwt = require('jsonwebtoken')
 const { JWT_SECRET } = process.env
 const { getUserById } = require('../db')
 
 apiRouter.use(async (req, res, next) => {
-  const prefix = 'Bearer'
+  const prefix = 'Bearer '
   const auth = req.header('Authorization')
 
   if (!auth) {
@@ -47,7 +47,7 @@ apiRouter.use('/users', usersRouter)
 //apiRouter.use('/products', productsRouter)
 //apiRouter.use('/reviews', reviewsRouter)
 //apiRouter.use('/orders', ordersRouter)
-//apiRouter.use('/orders_products', ordersProductsRouter)
+apiRouter.use('/orders_products', ordersProductsRouter)
 
 apiRouter.use((error, req, res, next) => {
   res.send({
