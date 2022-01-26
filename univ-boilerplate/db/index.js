@@ -3,6 +3,7 @@ const { Client, ClientBase } = require('pg');
 const DB_NAME = 'localhost:5432/grace'
 const DB_URL = process.env.DATABASE_URL || `postgres://${ DB_NAME }`;
 const client = new Client(DB_URL);
+// const {getAllProducts, getProductById, updateProductById, deleteProductById} = require('./products');
 
 // database methods
 async function createUser({username, password, email, address}) {
@@ -10,7 +11,7 @@ async function createUser({username, password, email, address}) {
       const {rows: [user]} = await client.query(`
           INSERT INTO users(username, password, email, address)
           VALUES ($1, $2, $3, $4)
-          ON CONFLICT (username) DO NOTHING 
+          ON CONFLICT (username) DO NOTHING
           RETURNING *;
       `, [username, password, email, address]);
 
