@@ -1,4 +1,4 @@
-const {client} = require('./index.js')
+const client = require('./client')
 
 
 async function createProduct({name, price, description, image}){
@@ -66,9 +66,10 @@ async function deleteProductById(id) {
   }
 }
 
-// module.exports = {
-//   getAllProducts,
-//   getProductById,
-//   updateProductById,
-//   deleteProductById
-// }
+ module.exports = {
+   getAllProducts,
+   getProductById,
+   updateProductById,
+   deleteProductById,
+   createProduct
+ }
