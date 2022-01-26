@@ -4,7 +4,7 @@ const {
   createProduct,
   createOrder,
   createReview,
-  createOrderProducts,
+  createOrdersProducts,
   // other db methods 
 } = require('./index');
 
