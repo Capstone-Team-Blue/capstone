@@ -58,7 +58,8 @@ usersRouter.post('/login', async (req, res, next) => {
     }
 })
 
-usersRouter.get('/all', requireAdmin, async (req, res, next) => {
+//would require admin
+usersRouter.get('/all', async (req, res, next) => {
     try{
         let users = await getAllUsers()
         res.send(users)
@@ -67,7 +68,8 @@ usersRouter.get('/all', requireAdmin, async (req, res, next) => {
     }
 })
 
-usersRouter.get('/:userid', requireAdmin, async (req, res, next) => {
+//would require admin
+usersRouter.get('/:userid', async (req, res, next) => {
     const {userid} = req.params
 
     try{
