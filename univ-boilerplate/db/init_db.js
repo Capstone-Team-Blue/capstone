@@ -10,7 +10,6 @@ const {
 
 const client = require('./client');
 const { getOrdersByUserId } = require('./orders');
-const { getAllUsers, getUserByUsername, getUser } = require('./users');
 
 async function buildTables() {
   try {
