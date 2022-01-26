@@ -3,6 +3,7 @@ const { Client } = require('pg');
 const DB_NAME = 'localhost:5432/grace'
 const DB_URL = process.env.DATABASE_URL || `postgres://${ DB_NAME }`;
 const client = new Client(DB_URL);
+// const {getAllProducts, getProductById, updateProductById, deleteProductById} = require('./products');
 
 // database methods
 async function createUser({username, password, email, address}) {
@@ -83,13 +84,13 @@ async function createOrderProducts({orderId, productId}) {
 
 async function createUsersProducts({userId, productId, quantity}) {
   try{
-    const {rows: [userProducts]} = await client.query(`
+    const {rows: [usersProducts]} = await client.query(`
       INSERT INTO users_products("userId", "productId", quantity)
       VALUES ($1, $2, $3)
       RETURNING *;
     `, [userId, productId, quantity])
 
-    return userProducts
+    return usersProducts
 
   } catch(err){
     throw err
@@ -104,6 +105,6 @@ module.exports = {
   createOrder,
   createReview,
   createOrderProducts,
-  createUsersProducts
+  createUsersProducts,
   // db methods
 }
