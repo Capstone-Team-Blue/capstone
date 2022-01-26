@@ -78,7 +78,7 @@ async function getUserByEmail(email){
     try{
         const {rows: [user]} = await client.query(`
             SELECT * FROM users
-            WHERE id=*1;
+            WHERE email=$1;
         `, [email])
 
         delete user.password
@@ -93,9 +93,11 @@ async function getUserByEmail(email){
 async function getUserByUsername(username){
     try{
         const {rows: [user]} = await client.query(`
-            SELECT username FROM users
-            WHERE username=*1;
+            SELECT * FROM users
+            WHERE username=$1;
         `, [username])
+
+        delete user.password
 
         return user
 

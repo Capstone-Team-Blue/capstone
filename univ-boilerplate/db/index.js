@@ -2,22 +2,6 @@
 const client = require('./client')
 
 //does not have its own js file yet
-async function createOrder({userId, isCart}){
-  try{
-    const {rows: [order]} = await client.query(`
-      INSERT INTO orders("userId", "isCart")
-      VALUES ($1, $2)
-      RETURNING *;
-    `, [userId, isCart])
-
-    return order
-
-  } catch(err){
-    throw err
-  }
-}
-
-//does not have its own js file yet
 async function createReview({productId, userId, rating, content}) {
   try{
     const {rows: [review]} = await client.query(`
@@ -52,10 +36,10 @@ async function createOrderProducts({orderId, productId, quantity, unitCost}) {
 // export
 module.exports = {
   client,
-  createOrder,
   createReview,
   createOrderProducts,
   ...require('./users'),
   ...require('./products'),
+  ...require('./orders')
   // db methods
 }
