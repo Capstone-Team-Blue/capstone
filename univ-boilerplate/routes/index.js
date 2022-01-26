@@ -5,7 +5,6 @@ const usersRouter = require('./users')
 //const reviewsRouter = require('./reviews')
 //const ordersRouter = require('./orders')
 //const ordersProductsRouter = require('./orders_products')
-//const usersProductsRouter = require('./users_products')
 
 const jwt = require('jsonwebtoken')
 const { JWT_SECRET } = process.env
@@ -49,7 +48,6 @@ apiRouter.use('/users', usersRouter)
 //apiRouter.use('/reviews', reviewsRouter)
 //apiRouter.use('/orders', ordersRouter)
 //apiRouter.use('/orders_products', ordersProductsRouter)
-//apiRouter.use('/users_products', usersProductsRouter)
 
 apiRouter.use((error, req, res, next) => {
   res.send({
