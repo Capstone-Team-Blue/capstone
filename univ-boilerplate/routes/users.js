@@ -18,7 +18,6 @@ usersRouter.post('/register', async (req, res, next) => {
     try{
         let user = await getUserByUsername(username)
         let userEmail = await getUserByEmail(email)
-
         if(user || userEmail){
             res.status(401)
             next({
@@ -33,7 +32,6 @@ usersRouter.post('/register', async (req, res, next) => {
             res.send({ 
                 message: "thank you for signing up",
                 jwt: token,
-                user: newUser
           });
         }
 

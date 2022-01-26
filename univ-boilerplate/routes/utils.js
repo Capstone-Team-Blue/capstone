@@ -24,7 +24,7 @@ function requireLogin(req, res, next) {
 //   next();
 // }
   
-//   module.exports = {
-//     requireLogin,
+  module.exports = {
+    requireLogin,
 //     requireAdmin,
-//   }
+  }

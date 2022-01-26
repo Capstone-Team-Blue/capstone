@@ -43,14 +43,14 @@ async function getOrdersProductsByOrderId(orderId) {
     }
 }
 
-async function updateOrdersProducts(id, orderId, productId, quantity, unitCost) {
+async function updateOrdersProducts({orderId, productId, quantity, unitCost}) {
     try {
         const {rows: [ordersProducts]} = await client.query(`
             UPDATE orders_products
-            SET "orderId" = COALESCE($2, "orderId"), "productId" = COALESCE($3, "productId"), quantity = COALESCE($4, quantity), "unitCost" = COALESCE($5, "unitCost")
-            WHERE id=$1
+            SET id = id, "productId" = COALESCE($3, "productId"), quantity = COALESCE($4, quantity), "unitCost" = COALESCE($5, "unitCost")
+            WHERE "orderId" = $2
             RETURNING *;
-        `, [id, orderId, productId, quantity, unitCost])
+        `, [orderId, productId, quantity, unitCost])
 
         return ordersProducts
 
