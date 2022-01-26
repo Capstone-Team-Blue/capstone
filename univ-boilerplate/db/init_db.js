@@ -34,11 +34,12 @@ async function buildTables() {
       await client.query(`
         CREATE TABLE users(
           id SERIAL PRIMARY KEY,
-          username VARCHAR(255) UNIQUE NOT NULL,
+          username VARCHAR(255) NOT NULL,
           password VARCHAR(255) NOT NULL,
-          email VARCHAR(255) UNIQUE NOT NULL,
+          email VARCHAR(255) NOT NULL,
           address VARCHAR(255) NOT NULL,
-          "isAdmin" BOOLEAN DEFAULT FALSE
+          "isAdmin" BOOLEAN DEFAULT FALSE,
+          unique(username, email)
         );
       `)
 
@@ -97,6 +98,7 @@ async function buildTables() {
 async function populateInitialData() {
   try {
     // create useful starting data
+    console.log('creating users')
     const usersToCreate = [
       { username: 'harmeet', password: 'harmeet99', email: 'harmeet@mail.com', address: '123 house street' },
       { username: 'dan', password: 'dan123', email: 'dan@mail.com', address: '124 house street' },
