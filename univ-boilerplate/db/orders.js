@@ -17,7 +17,7 @@ async function createOrder({userId, isCart}){
 
 async function getOrdersByUserId(userId){
     try{
-        const {rows: [orders]} = await client.query(`
+        const {rows: orders} = await client.query(`
             SELECT * FROM orders
             WHERE "userId"=$1;
         `, [userId])
@@ -45,8 +45,23 @@ async function updateCart(id, isCart){
     }
 }
 
+async function getOrdersByOrderId(id){
+    try{
+        const {rows: [orders]} = await client.query(`
+            SELECT * FROM orders
+            WHERE id=$1;
+        `, [id])
+
+        return orders
+
+    } catch(err){
+        throw err
+    }
+}
+
   module.exports = {
       createOrder,
       getOrdersByUserId,
-      updateCart
+      updateCart,
+      getOrdersByOrderId
   }
