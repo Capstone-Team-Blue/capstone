@@ -10,8 +10,23 @@ const { requireLogin } = require('./utils')
 ordersProductsRouter.post('/create', requireLogin, async(req, res, next) => {
     const { orderId, productId, quantity, unitCost } = req.body
     try {
-        const ordersProducts = await createOrdersProducts({orderId: orderId, productId: productId, quantity: quantity, unitCost: unitCost})
-        res.send(ordersProducts)
+        const orders = await getOrdersByOrderId(orderId)
+        if (!orders) {
+            res.status(401)
+            next({
+                name: 'OrdersNotFoundError',
+                message: 'no orders found for that orderId'
+            })
+        } else if (req.user.id !== orders.userId) {
+            res.status(401)
+                next({
+                    name: 'IncorrectUserError',
+                    message: 'user id and user belonging to that order do not match'
+                })
+        } else {
+            const ordersProducts = await createOrdersProducts({orderId: orderId, productId: productId, quantity: quantity, unitCost: unitCost})
+            res.send(ordersProducts)
+        }
     } catch (err) {
         throw err
     }
@@ -20,8 +35,23 @@ ordersProductsRouter.post('/create', requireLogin, async(req, res, next) => {
 ordersProductsRouter.get('/:orderId', requireLogin, async(req, res, next) => {
     const { orderId } = req.params
     try {
-        const ordersProducts = await getOrdersProductsByOrderId(orderId)
-        res.send(ordersProducts)
+        const orders = await getOrdersByOrderId(orderId)
+        if (!orders) {
+            res.status(401)
+            next({
+                name: 'OrdersNotFoundError',
+                message: 'no orders found for that orderId'
+            })
+        } else if (req.user.id !== orders.userId) {
+            res.status(401)
+                next({
+                    name: 'IncorrectUserError',
+                    message: 'user id and user belonging to that order do not match'
+                })
+        } else {
+            const ordersProducts = await getOrdersProductsByOrderId(orderId)
+            res.send(ordersProducts)
+        }
     } catch (err) {
         throw err
     }
