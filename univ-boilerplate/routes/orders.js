@@ -10,7 +10,7 @@ const {
 
 ordersRouter.get('/me', requireLogin, async (req, res, next) => {
     try{
-        let orders = await getOrdersByUserId(req.user.id)
+        const orders = await getOrdersByUserId(req.user.id)
         res.send(orders)
     } catch(err){
         next(err)
