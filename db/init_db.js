@@ -110,7 +110,25 @@ async function populateInitialData() {
     const productsToCreate = [
       {name: 'car', price: 2499, description: 'its a used car', image: 'google.com/car'},
       {name: 'toy', price: 1499, image: 'google.com/toy'},
-      {name: 'pancake', price: 1150, description: 'its a pancake'}
+      {name: 'pancake', price: 1150, description: 'its a pancake'},
+      {name: 'board game', price: 1999, description: 'board game in a box', image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/German_-_Box_for_Board_Games_-_Walters_7193_-_Bottom.jpg/800px-German_-_Box_for_Board_Games_-_Walters_7193_-_Bottom.jpg'},
+      {name: 'bicycle', price: 39999, description: 'fastest bicycle on the planet', image: 'https://image.shutterstock.com/image-photo/yellow-black-29er-mountainbike-thick-600w-1498702814.jpg'},
+      {name: 'Forest Gump Blu-ray', price: 999, description: 'Blu-ray version of Forest Gump'},
+      {name: 'Excalibur', price: 99999, description: 'most majestic sword ever created'},
+      {name: 'Vacuum', price: 5999, description: 'sucks up dirt like it was made for it because it was'},
+      {name: 'Feather Duster', price: 539, description: 'CLEAN THAT DUST'},
+      {name: 'Atari', price: 3674, description: 'revisit the good old days of gaming with this all-in-one gaming system'},
+      {name: 'Gibson Guitar', price: 24999, description: 'premium guitar'},
+      {name: '24-pack of Pepsi', price: 1299, description: '24 count of 12oz cans of Pepsi'},
+      {name: 'RGB Mechanical Keyboard', price: 6000, description: 'mechanical gaming keyboard with backlit, color adjustable keys'},
+      {name: 'Wireless Mouse', price: 1025, description: 'two-button ergonomical wireless mouth with usb receiver'},
+      {name: 'Blutooth Speaker', price: 7499, description: 'waterproof speaker with blutooth technology for those that love to sing in the shower'},
+      {name: 'Air Compressor', price: 8000, description: 'best air compressor on the market today'},
+      {name: 'Sport Sunglasses', price: 400, description: 'uv-protecting sport sunglasses for active humans'},
+      {name: 'Baseball Cap', price: 1999, description: 'support your favorite team with pride with this premium baseball cap'},
+      {name: 'Tennis Racket', price: 1000, description: 'the last tennis racket you will ever need to buy'},
+      {name: 'Playing Cards', price: 100, description: 'quality full deck of playing cards'},
+      {name: 'Weighted Blanket', price: 8999, description: 'weighted blanket for cold nights and restless legs'}
     ]
 
     const products = await Promise.all(productsToCreate.map(createProduct))
