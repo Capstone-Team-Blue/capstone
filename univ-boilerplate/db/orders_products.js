@@ -43,14 +43,14 @@ async function getOrdersProductsByOrderId(orderId) {
     }
 }
 
-async function updateOrdersProducts({id, orderId, productId, quantity, unitCost}) {
+async function updateOrdersProductsQuantity({id, quantity}) {
     try {
         const {rows: [ordersProducts]} = await client.query(`
             UPDATE orders_products
-            SET "orderId" = COALESCE($2, "orderId"), "productId" = COALESCE($3, "productId"), quantity = COALESCE($4, quantity), "unitCost" = COALESCE($5, "unitCost")
+            SET quantity = COALESCE($2, quantity)
             WHERE id = $1
             RETURNING *;
-        `, [id, orderId, productId, quantity, unitCost])
+        `, [id, quantity])
 
         return ordersProducts
 
@@ -78,6 +78,6 @@ module.exports = {
     createOrdersProducts,
     getOrdersProductsById,
     getOrdersProductsByOrderId,
-    updateOrdersProducts,
+    updateOrdersProductsQuantity,
     deleteOrdersProducts,
 }
