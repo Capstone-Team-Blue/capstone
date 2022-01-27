@@ -97,6 +97,8 @@ async function populateInitialData() {
       { username: 'harmeet', password: 'harmeet99', email: 'harmeet@mail.com', address: '123 house street' },
       { username: 'dan', password: 'dan123', email: 'dan@mail.com', address: '124 house street' },
       { username: 'mallorie', password: 'mallorie1234', email: 'mallorie@mail.com', address: '125 house street' },
+      { username: 'albert', password: 'albertie', email: 'mralbert@gmail.com', address: '083 albert street' },
+      { username: 'pablita', password: 'pablita12', email: 'pablita@yahoo.com', address: '64 pablita street ' }
     ]
     const users = await Promise.all(usersToCreate.map(createUser));
 
