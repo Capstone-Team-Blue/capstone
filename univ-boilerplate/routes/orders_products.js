@@ -1,5 +1,9 @@
 const ordersProductsRouter = require('express').Router()
-const { createOrdersProducts, updateOrdersProducts, getOrdersProductsByOrderId, getOrdersProductsById, deleteOrdersProducts} = require('../db')
+const { createOrdersProducts,
+        updateOrdersProducts,
+        getOrdersProductsByOrderId,
+        getOrdersProductsById,
+        deleteOrdersProducts} = require('../db')
 const { requireLogin } = require('./utils')
 
 ordersProductsRouter.post('/create', requireLogin, async(req, res, next) => {
