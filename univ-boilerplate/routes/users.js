@@ -11,7 +11,7 @@ const {
     getUserByUsername,
     getUserById,
     getAllUsers,
-} = require('../db/users')
+} = require('../db/index')
 
 usersRouter.post('/register', async (req, res, next) => {
     const {username, password, email, address} = req.body
