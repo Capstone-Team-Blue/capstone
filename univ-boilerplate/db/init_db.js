@@ -8,7 +8,8 @@ const {
   // other db methods 
 } = require('./index');
 
-const client = require('./client')
+const client = require('./client');
+const { getOrdersByUserId } = require('./orders');
 
 async function buildTables() {
   try {
@@ -103,6 +104,7 @@ async function populateInitialData() {
     console.log(users);
     console.log('Finished creating users!');
 
+
     const productsToCreate = [
       {name: 'car', price: 2499, description: 'its a used car', image: 'google.com/car'},
       {name: 'toy', price: 1499, image: 'google.com/toy'},
@@ -142,10 +144,14 @@ async function populateInitialData() {
     console.log('order products created')
     console.log(orderProducts)
     
+    console.log('GRABBING ORDERS FROM USER 1')
+    const ordersByUserId = await getOrdersByUserId(1)
+    console.log(ordersByUserId)
   } catch (error) {
     throw error;
   }
 }
+
 
 buildTables()
   .then(populateInitialData)
