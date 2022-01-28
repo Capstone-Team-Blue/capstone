@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom'
 
 const Nav = (props) => {
     return (
-        <div id='navBar'>
+        <div id='navBar' style={{margin: "10px 0px"}}>
             <Link to="/login"><button className="linkButton">Login</button></Link>
-            <Link to="/orders"><button className="linkButton">My Orders</button></Link>
+            <Link to="/myorders"><button className="linkButton">My Orders</button></Link>
         </div>
     )
 }

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import {BrowserRouter, Route, Link, Routes} from 'react-router-dom'
 import Login from './Login'
 import Nav from './Nav'
+import Orders from './Orders'
 
 const App = () => {
   const [ isLoggedIn, setIsLoggedIn ] = useState(false)
@@ -16,6 +17,9 @@ const App = () => {
         <Nav />
         <Route path='/login'>
           <Login setIsLoggedIn={setIsLoggedIn} setLoginToken={setLoginToken} setGlobalUserId={setGlobalUserId}/>
+        </Route>
+        <Route path='/myorders'>
+          <Orders globalUserId={globalUserId}/>
         </Route>
       </div>
     </BrowserRouter>
