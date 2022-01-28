@@ -21,3 +21,27 @@ export async function loginUser(username, password) {
       throw error
     }
 }
+
+export async function registerUser(username, password, email, address) {
+  try{
+    const response = await fetch(`${BASE_URL}/users/register`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        username: username,
+        password: password,
+        email: email,
+        address: address
+      })
+    })
+
+    const data = await response.json()
+
+    return data
+
+  } catch(error){
+    throw error
+  }
+}
