@@ -31,7 +31,8 @@ usersRouter.post('/register', async (req, res, next) => {
             const token = jwt.sign({id: newUser.id, username: newUser.username}, JWT_SECRET, {expiresIn: '1w'})
             res.send({ 
                 message: "thank you for signing up",
-                jwt: token,
+                token: token,
+                user: newUser
           });
         }
 
