@@ -45,3 +45,22 @@ export async function registerUser(username, password, email, address) {
     throw error
   }
 }
+
+export async function getUserOrders(token) {
+  try {
+    const response = await fetch(`${BASE_URL}/orders/me`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      },
+    })
+
+    const data = await response.json()
+
+    return data
+    
+  } catch (error) {
+    throw error
+  }
+}

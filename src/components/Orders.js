@@ -3,10 +3,10 @@ import OrdersList from "./OrdersList"
 import OrderDetails from "./OrderDetails"
 
 const Orders = (props) => {
-    const { globalUserId } = props
+    const { loginToken } = props
     return (
         <div id="ordersContainer">
-            <OrdersList globalUserId={globalUserId}/>
+            <OrdersList loginToken={loginToken}/>
             <OrderDetails />
         </div>
     )

@@ -65,7 +65,7 @@ const Login = (props) => {
                     event.preventDefault()
                     try{
                         let data = await registerUser(usernameRegister, passwordRegister, email, address)
-                        if(data.jwt){ 
+                        if(data.token){ 
                             setIsLoggedIn(true) 
                             setLoginToken(data.token)
                             setGlobalUserId(data.user.id)
