@@ -45,11 +45,16 @@ usersRouter.post('/login', async (req, res, next) => {
 
     try{
         let user = await getUser({username: username, password: password})
+        delete user.email
+        delete user.isAdmin
+        delete user.address
 
         const token = jwt.sign({ id: user.id, username: user.username }, JWT_SECRET, {expiresIn: '1w'});
         res.send({ 
         message: 'successfully logged in!',
-        token: token })
+        token: token,
+        user: user
+        })
 
     } catch(err){
         next(err)
