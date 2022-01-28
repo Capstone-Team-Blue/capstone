@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import {BrowserRouter, Route, Link, Routes} from 'react-router-dom'
+import Login from './Login'
 
 import {
   getSomething
@@ -6,22 +8,19 @@ import {
 
 const App = () => {
   const [message, setMessage] = useState('');
+  const [ isLoggedIn, setIsLoggedIn ] = useState(false)
+  const [ loginToken, setLoginToken ] = useState('')
+  const [ globalUserId, setGlobalUserId ] = useState('')
 
-  useEffect(() => {
-    getSomething()
-      .then(response => {
-        setMessage(response.message);
-      })
-      .catch(error => {
-        setMessage(error.message);
-      });
-  });
 
   return (
-    <div className="App">
-      <h1>Hello, World!</h1>
-      <h2>{ message }</h2>
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <h1>Hello, World!</h1>
+        <h2>{ message }</h2>
+        <Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} loginToken={loginToken} setLoginToken={setLoginToken} globalUserId={globalUserId} setGlobalUserId={setGlobalUserId}/>
+      </div>
+    </BrowserRouter>
   );
 }
 
