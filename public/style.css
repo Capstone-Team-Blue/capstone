@@ -4,3 +4,18 @@
     padding: 0;
     margin: 0;
   }
+
+#ordersContainer {
+  border: 2px solid black;
+  display: flex;
+}
+
+#ordersListContainer {
+  background-color: aqua;
+  width: 20%;
+}
+
+#orderDetailsContainer {
+  background-color: gold;
+  width: 80%;
+}

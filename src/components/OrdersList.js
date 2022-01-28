@@ -3,7 +3,7 @@ import React from "react"
 const OrdersList = (props) => {
     return (
         <div id='ordersListContainer'>
-            OrdersList
+            Orders List
         </div>
     )
 }

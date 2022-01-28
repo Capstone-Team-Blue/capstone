@@ -1,7 +1,6 @@
 import React from "react"
-import {
-    OrdersList,
-    OrderDetails } from './index'
+import OrdersList from "./OrdersList"
+import OrderDetails from "./OrderDetails"
 
 const Orders = (props) => {
     return (

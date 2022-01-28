@@ -1,10 +1,9 @@
-import axios from 'axios';
+const BASE_URL = 'http://localhost:4000/api'
 
-export async function getSomething() {
+export async function getAllOrdersForUser(userId) {
   try {
-    const { data } = await axios.get('/api');
-    return data;
+    const data = await fetch(`${BASE_URL}/orders`)
   } catch (error) {
-    throw error;
+    throw error
   }
 }
