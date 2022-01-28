@@ -12,3 +12,11 @@ productsRouter.get('/', async (req, res, next) => {
   }
 })
 
+productsRouter.get('/:productId', async (req,res,next) => {
+  try{
+    let product = await getProductById(req.params.productId);
+    res.send(product);
+  }catch(err){
+    throw err;
+  }
+})
