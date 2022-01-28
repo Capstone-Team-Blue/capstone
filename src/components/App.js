@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {BrowserRouter, Route, Link, Routes} from 'react-router-dom'
 import Login from './Login'
+import Nav from './Nav'
 
 const App = () => {
   const [ isLoggedIn, setIsLoggedIn ] = useState(false)
@@ -12,7 +13,10 @@ const App = () => {
     <BrowserRouter>
       <div className="App">
         <h1>Hello, World!</h1>
-        <Login setIsLoggedIn={setIsLoggedIn} setLoginToken={setLoginToken} setGlobalUserId={setGlobalUserId}/>
+        <Nav />
+        <Route path='/login'>
+          <Login setIsLoggedIn={setIsLoggedIn} setLoginToken={setLoginToken} setGlobalUserId={setGlobalUserId}/>
+        </Route>
       </div>
     </BrowserRouter>
   );

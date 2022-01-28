@@ -5,6 +5,14 @@
     margin: 0;
   }
 
+.linkButton {
+  background-color: blue;
+  color: white;
+  border-radius: 100px;
+  padding: 5px;
+  margin-left: 10px;
+}
+
 #ordersContainer {
   border: 2px solid black;
   display: flex;
