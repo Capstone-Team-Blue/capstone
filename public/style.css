@@ -5,6 +5,29 @@
     margin: 0;
   }
 
+.linkButton {
+  background-color: blue;
+  color: white;
+  border-radius: 100px;
+  padding: 5px;
+  margin-left: 10px;
+}
+
+#ordersContainer {
+  border: 2px solid black;
+  display: flex;
+}
+
+#ordersListContainer {
+  background-color: aqua;
+  width: 20%;
+}
+
+#orderDetailsContainer {
+  background-color: gold;
+  width: 80%;
+}
+
 form{
     border: 2px solid red;
     display: flex;
