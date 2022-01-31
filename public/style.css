@@ -53,3 +53,22 @@ form > *:not(:last-child){
     display: flex;
     justify-content: space-evenly;
 }
+
+.product-card {
+  margin: 20px;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 .1rem;
+  margin: 0 12px 12px 0;
+  box-shadow: 0 3px 5px -2px black;
+}
+
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+  font-family: 'Open Sans', sans-serif;
+  align-items:flex-start;
+  padding: 1rem 0;
+  flex: 1;
+}
