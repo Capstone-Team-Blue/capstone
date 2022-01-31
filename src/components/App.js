@@ -13,7 +13,7 @@ const App = () => {
     <BrowserRouter>
       <div className="App">
         <h1>Hello, World!</h1>
-        <Login setIsLoggedIn={setIsLoggedIn} setLoginToken={setLoginToken} setGlobalUserId={setGlobalUserId}/>
+        <Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setLoginToken={setLoginToken} setGlobalUserId={setGlobalUserId}/>
       </div>
     </BrowserRouter>
   );
