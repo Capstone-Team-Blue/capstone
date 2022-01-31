@@ -20,7 +20,7 @@ const App = () => {
           <Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setLoginToken={setLoginToken} setGlobalUserId={setGlobalUserId}/>
         </Route>
         <Route path='/myorders'>
-          <Orders globalUserId={globalUserId}/>
+          <Orders loginToken={loginToken}/>
         </Route>
         <Route path='/cart'>
           <Cart globalUserId={globalUserId}/>
