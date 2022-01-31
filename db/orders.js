@@ -43,8 +43,6 @@ async function getOrdersAndProductsByUserId(userId){
             order.products = filteredProducts
         })
 
-        console.log('ALL ORDERS:', allOrders)
-
         return allOrders
 
     } catch (err) {
