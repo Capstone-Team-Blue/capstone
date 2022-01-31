@@ -1,28 +1,27 @@
-import React, { useState, useEffect } from "react"
-import { getUserOrders } from "../api"
+import React, { useEffect } from "react"
 
 const OrdersList = (props) => {
-    const { loginToken, globalUserId } = props
-
-    const [ myOrders, setMyOrders ] = useState([])
+    const { loginToken, setSelectedOrder, myOrders } = props
 
     useEffect(() => {
-        async function getAllMyOrders(loginToken, globalUserId){
-            setMyOrders(await getUserOrders(loginToken, globalUserId))
+        if (loginToken) {
+            const orders = [...document.getElementsByClassName('ordersListItem')]
+            for (let i = 0; i < orders.length; i++) {
+                orders[i].addEventListener('click', () => {
+                    setSelectedOrder(orders[i].id)
+                })
+            }
         }
-        getAllMyOrders(loginToken, globalUserId)
-    }, [])
+    }, [myOrders])
 
     return (
         loginToken ? 
         <div id='ordersListContainer'>
             <h2>Orders List</h2>
             <div>
-                <ul>
                 {myOrders ? myOrders.map((el, idx) => (
-                    <li key={idx}>Order id#: {el.id}</li>
+                    <div id={idx} className='ordersListItem' key={idx}>Order id#: {el.id}</div>
                 )) : undefined}
-                </ul>
             </div>
         </div>
         :

@@ -38,6 +38,16 @@ async function getOrdersAndProductsByUserId(userId){
             WHERE "userId"=$1;
         `, [userId])
 
+        const {rows: names} = await client.query(`
+            SELECT orders_products."productId", products.name FROM orders_products
+            JOIN products ON products.id=orders_products."productId";
+        `)
+
+        products.forEach(product => {
+            let foundItem = names.find(el => el.productId === product.productId) 
+            product.name = foundItem.name
+        })
+
         allOrders.forEach(order => {
             let filteredProducts = products.filter(product => product.id === order.id)
             order.products = filteredProducts
