@@ -53,3 +53,14 @@ form > *:not(:last-child){
     display: flex;
     justify-content: space-evenly;
 }
+
+#singleCartItem{
+  border: 2px solid black;
+  width: 50%;
+  margin: 10px;
+  padding: 10px;
+}
+
+ul{
+  list-style: none;
+}

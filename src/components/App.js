@@ -15,7 +15,7 @@ const App = () => {
     <BrowserRouter>
       <div className="App">
         <h1>Hello, World!</h1>
-        <Nav />
+        <Nav loginToken={loginToken}/>
         <Route path='/login'>
           <Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setLoginToken={setLoginToken} setGlobalUserId={setGlobalUserId}/>
         </Route>
@@ -23,7 +23,7 @@ const App = () => {
           <Orders loginToken={loginToken}/>
         </Route>
         <Route path='/cart'>
-          <Cart globalUserId={globalUserId}/>
+          <Cart globalUserId={globalUserId} loginToken={loginToken}/>
         </Route>
       </div>
     </BrowserRouter>

@@ -68,6 +68,21 @@ async function updateCart(id, isCart){
     }
 }
 
+async function getCart(userId){
+    try{
+        const {rows: orders} = await client.query(`
+            SELECT * FROM orders
+            JOIN orders_products ON orders.id = orders_products."orderId"
+            WHERE "userId"=$1 AND "isCart" = 'true';
+        `, [userId])
+
+        return orders
+
+    } catch (err){
+        throw err
+    }
+}
+
 async function getOrdersByOrderId(id){
     try{
         const {rows: [orders]} = await client.query(`
@@ -87,5 +102,6 @@ async function getOrdersByOrderId(id){
       getOrdersByUserId,
       updateCart,
       getOrdersByOrderId,
-      getOrdersAndProductsByUserId
+      getOrdersAndProductsByUserId,
+      getCart
   }
