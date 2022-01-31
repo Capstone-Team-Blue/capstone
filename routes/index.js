@@ -2,7 +2,7 @@ const apiRouter = require('express').Router();
 
 const usersRouter = require('./users')
 const ordersRouter = require('./orders')
-//const productsRouter = require('./products')
+const productsRouter = require('./products')
 //const reviewsRouter = require('./reviews')
 const ordersProductsRouter = require('./orders_products')
 
@@ -44,7 +44,7 @@ apiRouter.get("/", (req, res, next) => {
 });
 
 apiRouter.use('/users', usersRouter)
-//apiRouter.use('/products', productsRouter)
+apiRouter.use('/products', productsRouter)
 //apiRouter.use('/reviews', reviewsRouter)
 apiRouter.use('/orders', ordersRouter)
 apiRouter.use('/orders_products', ordersProductsRouter)
