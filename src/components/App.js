@@ -3,6 +3,7 @@ import {BrowserRouter, Route, Link, Routes} from 'react-router-dom'
 import Login from './Login'
 import Nav from './Nav'
 import Orders from './Orders'
+import Cart from './Cart'
 
 const App = () => {
   const [ isLoggedIn, setIsLoggedIn ] = useState(false)
@@ -20,6 +21,9 @@ const App = () => {
         </Route>
         <Route path='/myorders'>
           <Orders globalUserId={globalUserId}/>
+        </Route>
+        <Route path='/cart'>
+          <Cart globalUserId={globalUserId}/>
         </Route>
       </div>
     </BrowserRouter>
