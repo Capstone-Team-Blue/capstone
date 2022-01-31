@@ -16,7 +16,7 @@ const App = () => {
         <h1>Hello, World!</h1>
         <Nav />
         <Route path='/login'>
-          <Login setIsLoggedIn={setIsLoggedIn} setLoginToken={setLoginToken} setGlobalUserId={setGlobalUserId}/>
+          <Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setLoginToken={setLoginToken} setGlobalUserId={setGlobalUserId}/>
         </Route>
         <Route path='/myorders'>
           <Orders loginToken={loginToken}/>
