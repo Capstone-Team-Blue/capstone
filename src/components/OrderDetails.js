@@ -3,7 +3,7 @@ import React from "react"
 const OrderDetails = (props) => {
     return (
         <div id='orderDetailsContainer'>
-            Order Details
+            <h2>Order Details</h2>
         </div>
     )
 }
