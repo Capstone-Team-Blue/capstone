@@ -6,7 +6,8 @@ const {
     createOrder,
     getOrdersByUserId,
     updateCart,
-    getOrdersByOrderId
+    getOrdersByOrderId,
+    getOrdersAndProductsByUserId
 } = require('../db/index')
 
 ordersRouter.get('/me', requireLogin, async (req, res, next) => {
@@ -71,6 +72,30 @@ ordersRouter.patch('/checkout/:orderid', requireLogin, async (req, res, next) =>
         }
 
     } catch(err){
+        throw err
+    }
+})
+
+ordersRouter.get('/myorders/:userId', requireLogin, async (req, res, next) => {
+    const { userId } = req.params
+    try {
+        const orders = await getOrdersAndProductsByUserId(userId)
+        if (!orders) {
+            res.status(401)
+            next({
+                name: 'NoOrdersFoundError',
+                message: 'No orders were found for that userId'
+            })
+        } else if (req.user.id !== orders[0].userId) {
+            res.status(401)
+            next({
+                name: 'NotOwnerError',
+                message: 'You must be the one who made an order to view it'
+            })
+        } else {
+            res.send(orders)
+        }
+    } catch (err) {
         throw err
     }
 })

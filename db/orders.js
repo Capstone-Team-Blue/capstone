@@ -31,13 +31,21 @@ async function getOrdersByUserId(userId){
 
 async function getOrdersAndProductsByUserId(userId){
     try {
-        const {rows: orders} = await client.query(`
-            SELECT * FROM orders
-            JOIN orders_products ON orders.id = orders_products."orderId"
+        let allOrders = await getOrdersByUserId(userId)
+        const {rows: products} = await client.query(`
+            SELECT orders.id, orders."userId", orders_products."productId", orders_products.quantity, orders_products."unitCost" FROM orders
+            JOIN orders_products ON orders.id=orders_products."orderId"
             WHERE "userId"=$1;
         `, [userId])
 
-        return orders
+        allOrders.forEach(order => {
+            let filteredProducts = products.filter(product => product.id === order.id)
+            order.products = filteredProducts
+        })
+
+        console.log('ALL ORDERS:', allOrders)
+
+        return allOrders
 
     } catch (err) {
         throw err
