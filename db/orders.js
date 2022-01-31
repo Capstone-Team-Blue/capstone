@@ -29,6 +29,27 @@ async function getOrdersByUserId(userId){
     }
 }
 
+async function getOrdersAndProductsByUserId(userId){
+    try {
+        let allOrders = await getOrdersByUserId(userId)
+        const {rows: products} = await client.query(`
+            SELECT orders.id, orders."userId", orders_products."productId", orders_products.quantity, orders_products."unitCost" FROM orders
+            JOIN orders_products ON orders.id=orders_products."orderId"
+            WHERE "userId"=$1;
+        `, [userId])
+
+        allOrders.forEach(order => {
+            let filteredProducts = products.filter(product => product.id === order.id)
+            order.products = filteredProducts
+        })
+
+        return allOrders
+
+    } catch (err) {
+        throw err
+    }
+}
+
 async function updateCart(id, isCart){
     try{
         const {rows: [order]} = await client.query(`
@@ -63,5 +84,6 @@ async function getOrdersByOrderId(id){
       createOrder,
       getOrdersByUserId,
       updateCart,
-      getOrdersByOrderId
+      getOrdersByOrderId,
+      getOrdersAndProductsByUserId
   }

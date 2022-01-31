@@ -138,7 +138,9 @@ async function populateInitialData() {
 
     const ordersToCreate = [
       {userId: 1, isCart: false},
-      {userId: 3, isCart: true}
+      {userId: 3, isCart: true},
+      {userId: 4, isCart: true},
+      {userId: 2, isCart: true},
     ]
 
     const orders = await Promise.all(ordersToCreate.map(createOrder))
@@ -157,7 +159,9 @@ async function populateInitialData() {
 
     const ordersProductsToCreate = [
       {orderId: 1, productId: 2, quantity: 5, unitCost: 1000},
-      {orderId: 2, productId: 3, quantity: 1, unitCost: 2000}
+      {orderId: 2, productId: 3, quantity: 1, unitCost: 2000},
+      {orderId: 3, productId: 2, quantity: 4, unitCost: 1000},
+      {orderId: 3, productId: 3, quantity: 1, unitCost: 2000}
     ]
 
     const ordersProducts = await Promise.all(ordersProductsToCreate.map(createOrdersProducts))
