@@ -141,6 +141,17 @@ async function populateInitialData() {
       {userId: 3, isCart: true},
       {userId: 4, isCart: true},
       {userId: 2, isCart: true},
+      {userId: 2, isCart: false},
+      {userId: 3, isCart: false},
+      {userId: 4, isCart: false},
+      {userId: 3, isCart: false},
+      {userId: 3, isCart: false},
+      {userId: 3, isCart: false},
+      {userId: 4, isCart: false},
+      {userId: 3, isCart: false},
+      {userId: 3, isCart: false},
+      {userId: 2, isCart: false},
+      {userId: 2, isCart: false}
     ]
 
     const orders = await Promise.all(ordersToCreate.map(createOrder))
@@ -162,7 +173,30 @@ async function populateInitialData() {
       {orderId: 2, productId: 3, quantity: 1, unitCost: 2000},
       {orderId: 2, productId: 5, quantity: 1, unitCost: 3000},
       {orderId: 3, productId: 2, quantity: 4, unitCost: 1000},
-      {orderId: 3, productId: 3, quantity: 1, unitCost: 2000}
+      {orderId: 3, productId: 3, quantity: 1, unitCost: 2000},
+      {orderId: 3, productId: 6, quantity: 1, unitCost: 9999},
+      {orderId: 6, productId: 1, quantity: 1, unitCost: 999},
+      {orderId: 5, productId: 2, quantity: 10, unitCost: 1000},
+      {orderId: 5, productId: 3, quantity: 1, unitCost: 2000},
+      {orderId: 2, productId: 10, quantity: 1, unitCost: 8392},
+      {orderId: 1, productId: 2, quantity: 5, unitCost: 1000},
+      {orderId: 2, productId: 3, quantity: 1, unitCost: 2000},
+      {orderId: 3, productId: 2, quantity: 4, unitCost: 1000},
+      {orderId: 3, productId: 3, quantity: 1, unitCost: 2000},
+      {orderId: 3, productId: 6, quantity: 1, unitCost: 9999},
+      {orderId: 6, productId: 1, quantity: 1, unitCost: 999},
+      {orderId: 5, productId: 2, quantity: 10, unitCost: 1000},
+      {orderId: 5, productId: 3, quantity: 1, unitCost: 2000},
+      {orderId: 2, productId: 10, quantity: 1, unitCost: 8392},
+      {orderId: 1, productId: 2, quantity: 5, unitCost: 1000},
+      {orderId: 2, productId: 3, quantity: 1, unitCost: 2000},
+      {orderId: 3, productId: 2, quantity: 4, unitCost: 1000},
+      {orderId: 3, productId: 3, quantity: 1, unitCost: 2000},
+      {orderId: 3, productId: 6, quantity: 1, unitCost: 9999},
+      {orderId: 6, productId: 1, quantity: 1, unitCost: 999},
+      {orderId: 5, productId: 2, quantity: 10, unitCost: 1000},
+      {orderId: 5, productId: 3, quantity: 1, unitCost: 2000},
+      {orderId: 2, productId: 10, quantity: 1, unitCost: 8392},
     ]
 
     const ordersProducts = await Promise.all(ordersProductsToCreate.map(createOrdersProducts))

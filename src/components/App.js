@@ -3,7 +3,11 @@ import {BrowserRouter, Route, Link, Routes} from 'react-router-dom'
 import Login from './Login'
 import Nav from './Nav'
 import Orders from './Orders'
-import Cart from './Cart'
+import ProductPage from './ProductPage';
+import logo from '../assets/logo.png';
+;
+
+
 
 const App = () => {
   const [ isLoggedIn, setIsLoggedIn ] = useState(false)
@@ -16,14 +20,19 @@ const App = () => {
       <div className="App">
         <h1>Hello, World!</h1>
         <Nav loginToken={loginToken}/>
+        <a href="http://localhost:3000/"><img className='logo' src={logo} /></a>
+        <Nav />
         <Route path='/login'>
           <Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setLoginToken={setLoginToken} setGlobalUserId={setGlobalUserId}/>
         </Route>
         <Route path='/myorders'>
-          <Orders loginToken={loginToken}/>
+          <Orders loginToken={loginToken} globalUserId={globalUserId}/>
         </Route>
         <Route path='/cart'>
           <Cart globalUserId={globalUserId} loginToken={loginToken}/>
+         </Route>
+        <Route exact path='/'>
+          <ProductPage className='product-page'/>
         </Route>
       </div>
     </BrowserRouter>

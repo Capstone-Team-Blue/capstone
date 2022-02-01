@@ -47,9 +47,9 @@ export async function registerUser(username, password, email, address) {
   }
 }
 
-export async function getUserOrders(token) {
+export async function getUserOrders(token, userId) {
   try {
-    const response = await fetch(`${BASE_URL}/orders/me`, {
+    const response = await fetch(`${BASE_URL}/orders/myorders/${userId}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

@@ -14,18 +14,95 @@
 }
 
 #ordersContainer {
-  border: 2px solid black;
-  display: flex;
+  display: flex
+}
+
+#ordersContainer h2 {
+  padding-left: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  text-decoration: underline;
 }
 
 #ordersListContainer {
-  background-color: aqua;
+  background-color: rgb(215, 238, 252);
+  border: 2px solid black;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  margin-left: 5%;
   width: 20%;
 }
 
+.ordersListItem {
+  margin: 0 10px;
+  padding-left: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid black;
+  font-size: 1.125rem;
+}
+
+.ordersListItem:nth-child(even) {
+  background-color: lightskyblue;
+}
+
+.ordersListItem:nth-child(odd) {
+  background-color: lightgray;
+}
+
+#ordersListContainer .ordersListItem:first-child {
+  border-top: 1px solid black;
+}
+
+#ordersListContainer .ordersListItem:last-child {
+  margin-bottom: 5px;
+}
+
+.ordersListItem:hover {
+  text-decoration: underline;
+  font-weight: bold;
+}
+
 #orderDetailsContainer {
-  background-color: gold;
+  background-color: rgb(215, 238, 252);
+  border: 2px solid black;
+  border-left: none;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  margin-right: 5%;
   width: 80%;
+}
+
+.orderDetailsItem {
+  margin: 0 10px;
+  padding: 5px 10px;
+  border-bottom: 1px solid black;
+  font-size: 1.125rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.orderDetailsItem:nth-child(even) {
+  background-color: lightskyblue;
+}
+
+.orderDetailsItem:nth-child(odd) {
+  background-color: lightgray;
+}
+
+.orderDetailsItem:first-child {
+  border-top: 1px solid black;
+}
+
+#detailQuantityAndCosts {
+  text-align: right;
+}
+
+#orderDetailTotalCost h3 {
+  text-align: right;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 10px;
 }
 
 form{
@@ -77,4 +154,25 @@ input{
 
 #productNumber{
   margin-right: 20px;
+
+.product-card {
+  margin: 20px;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 .1rem;
+  margin: 0 12px 12px 0;
+  box-shadow: 0 3px 5px -2px black;
+}
+
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+  font-family: 'Open Sans', sans-serif;
+  align-items:flex-start;
+  padding: 1rem 3rem;
+  flex: 1;
+}
+.logo {
+  height: 150px
 }
