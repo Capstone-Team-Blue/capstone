@@ -18,6 +18,8 @@ const App = () => {
   return (
     <BrowserRouter>
       <div className="App">
+        <h1>Hello, World!</h1>
+        <Nav loginToken={loginToken}/>
         <a href="http://localhost:3000/"><img className='logo' src={logo} /></a>
         <Nav />
         <Route path='/login'>
@@ -26,6 +28,9 @@ const App = () => {
         <Route path='/myorders'>
           <Orders loginToken={loginToken} globalUserId={globalUserId}/>
         </Route>
+        <Route path='/cart'>
+          <Cart globalUserId={globalUserId} loginToken={loginToken}/>
+         </Route>
         <Route exact path='/'>
           <ProductPage className='product-page'/>
         </Route>
