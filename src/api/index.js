@@ -3,7 +3,7 @@ const BASE_URL_TEST = 'http://localhost:4000/api'
 
 export async function loginUser(username, password) {
     try{
-      const response = await fetch(`${BASE_URL_TEST}/users/login`, {
+      const response = await fetch(`${BASE_URL}/users/login`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -49,7 +49,7 @@ export async function registerUser(username, password, email, address) {
 
 export async function getUserOrders(token) {
   try {
-    const response = await fetch(`${BASE_URL_TEST}/orders/me`, {
+    const response = await fetch(`${BASE_URL}/orders/me`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -68,7 +68,7 @@ export async function getUserOrders(token) {
 
 export async function getUserCart(token) {
   try{
-    const response = await fetch(`${BASE_URL_TEST}/orders/cart`, {
+    const response = await fetch(`${BASE_URL}/orders/cart`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -87,7 +87,7 @@ export async function getUserCart(token) {
 
 export async function updateQuantity(quantity, orderId, token){
   try{
-    const response = await fetch(`${BASE_URL_TEST}/orders_products/${orderId}`, {
+    const response = await fetch(`${BASE_URL}/orders_products/${orderId}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -109,7 +109,7 @@ export async function updateQuantity(quantity, orderId, token){
 
 export async function checkout(orderId, token){
   try{
-    const response = await fetch(`${BASE_URL_TEST}/orders/checkout/${orderId}`, {
+    const response = await fetch(`${BASE_URL}/orders/checkout/${orderId}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -128,7 +128,7 @@ export async function checkout(orderId, token){
 
 export async function removeFromCart(orderId, token){
   try {
-    const response = await fetch(`${BASE_URL_TEST}/orders_products/${orderId}`, {
+    const response = await fetch(`${BASE_URL}/orders_products/${orderId}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -139,7 +139,7 @@ export async function removeFromCart(orderId, token){
     const data = await response.json()
 
     return data
-    
+
   } catch (error) {
     throw error
   }
