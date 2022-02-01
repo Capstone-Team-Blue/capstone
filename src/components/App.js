@@ -6,6 +6,7 @@ import Orders from './Orders'
 import ProductPage from './ProductPage';
 import Cart from './Cart'
 import logo from '../assets/logo.png';
+;
 
 const App = () => {
   const [ isLoggedIn, setIsLoggedIn ] = useState(false)
