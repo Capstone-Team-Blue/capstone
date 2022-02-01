@@ -4,7 +4,9 @@ import Login from './Login'
 import Nav from './Nav'
 import Orders from './Orders'
 import ProductPage from './ProductPage';
+import logo from '../assets/logo.png';
 ;
+
 
 
 const App = () => {
@@ -19,6 +21,7 @@ const App = () => {
       <div className="App">
         <h1>Hello, World!</h1>
         <Nav setIsLoggedIn={setIsLoggedIn} setLoginToken={setLoginToken} setUsername={setUsername} setPassword={setPassword} isLoggedIn={isLoggedIn} />
+        <a href="http://localhost:3000/"><img className='logo' src={logo} /></a>
         <Route path='/login'>
           <Login username={username} setUsername={setUsername} password={password} setPassword={setPassword} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setLoginToken={setLoginToken} setGlobalUserId={setGlobalUserId}/>
         </Route>
@@ -31,6 +34,12 @@ const App = () => {
         </Route>
         <Route exact path='/'>
           <ProductPage/>
+        </Route>
+        <Route path='/cart'>
+          <Cart globalUserId={globalUserId} loginToken={loginToken}/>
+         </Route>
+        <Route exact path='/'>
+          <ProductPage className='product-page'/>
         </Route>
       </div>
     </BrowserRouter>

@@ -7,7 +7,8 @@ const {
     getOrdersByUserId,
     updateCart,
     getOrdersByOrderId,
-    getOrdersAndProductsByUserId
+    getOrdersAndProductsByUserId,
+    getCart
 } = require('../db/index')
 
 ordersRouter.get('/me', requireLogin, async (req, res, next) => {
@@ -16,6 +17,23 @@ ordersRouter.get('/me', requireLogin, async (req, res, next) => {
         res.send(orders)
     } catch(err){
         next(err)
+    }
+})
+
+ordersRouter.get('/cart', requireLogin, async (req, res, next) => {
+    console.log('in the route')
+    try{
+        console.log("in the try")
+        const cart = await getCart(req.user.id)
+        console.log("got cart")
+        if(!cart){
+            res.send('nothing here yet!')
+        }
+        else{
+            res.send(cart)
+        }
+    } catch (err) {
+        throw err
     }
 })
 
@@ -28,7 +46,7 @@ ordersRouter.post('/create', requireLogin, async (req, res, next) => {
     }
 })
 
-ordersRouter.get('/:orderid', requireLogin, async (req, res, next) => {
+ordersRouter.get('/orderid/:orderid', requireLogin, async (req, res, next) => {
     const {orderid} = req.params
     try{
         const order = await getOrdersByOrderId(orderid)

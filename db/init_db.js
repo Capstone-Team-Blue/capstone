@@ -171,6 +171,7 @@ async function populateInitialData() {
     const ordersProductsToCreate = [
       {orderId: 1, productId: 2, quantity: 5, unitCost: 1000},
       {orderId: 2, productId: 3, quantity: 1, unitCost: 2000},
+      {orderId: 2, productId: 5, quantity: 1, unitCost: 3000},
       {orderId: 3, productId: 2, quantity: 4, unitCost: 1000},
       {orderId: 3, productId: 3, quantity: 1, unitCost: 2000},
       {orderId: 3, productId: 6, quantity: 1, unitCost: 9999},
