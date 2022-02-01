@@ -7,8 +7,9 @@ const OrderDetails = (props) => {
 
     if (selectedOrder) {
         myOrders[selectedOrder].products.map((elem) => {
-            totalCost += elem.quantity * elem.unitCost/100
+            totalCost += elem.quantity * elem.unitCost
         })
+        totalCost = totalCost/100
     }
 
     return (
@@ -24,7 +25,7 @@ const OrderDetails = (props) => {
                             <div id='detailQuantityAndCosts'>
                                 <div>Quantity: {el.quantity}</div>
                                 <div>Single Unit Cost: ${el.unitCost/100}</div>
-                                <div>Product Total Cost: ${el.quantity * el.unitCost/100}</div>
+                                <div>Product Total Cost: ${(el.quantity * el.unitCost)/100}</div>
                             </div>
                         </div>
                     )) : undefined}

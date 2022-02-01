@@ -1,9 +1,11 @@
+import { token } from 'morgan'
 import React, { useState, useEffect } from 'react'
 import { checkout, getUserCart, updateQuantity, removeFromCart } from '../api'
 
 const Cart = (props) => {
     const { loginToken } = props
     const [ cart, setCart ] = useState([])
+    const [ ordersId, setOrdersId ] = useState(-1)
 
     useEffect(() => {
         async function getCurrentCart(loginToken){
@@ -20,11 +22,11 @@ const Cart = (props) => {
         <div id='cart'>
             <h1>Your Cart</h1>
             <div id='singleCartItem'>
-                { cart ? cart.map((el, index) => (
+                { cart.length ? cart.map((el, index) => (
                     <div key={index} className='cartItems'>
                         <h3 id='orderNumber'>Order number: {el.orderId}</h3>
                         <h4 id='productNumber'>Product number: {el.productId}</h4>
-                        <p>Price per unit: $ {el.unitCost/100}</p>
+                        <p>Price per unit: $ {el.unitCost}</p>
                         <label htmlFor='quantity'>Quantity: </label>
                         <form className='CartForm' onSubmit={async (event) => {
                             event.preventDefault()
@@ -43,21 +45,20 @@ const Cart = (props) => {
                             ></input>
                             <button type='submit' id='quantityButton'>Update Cart</button>
                             <button type='button' id='deleteFromCart' onClick={async () => {
-                                console.log('click')
-                                let test = await removeFromCart(el.id, loginToken)
-                                console.log(test)
+                                await removeFromCart(el.id, loginToken)
+                                setCart(await getUserCart(loginToken))
                                 }}>Remove</button>
                         </form>
                     </div>
                 )) : null }
             </div>
-            <form className='checkoutForm' onSubmit={async (event) => {
-                event.preventDefault()
-                //need a way to get order id consistent
-                // let test = await checkout(el.orderId, loginToken)
-            }}>
-                <button type='submit' id='checkout'>checkout</button>
-            </form>
+            {cart.length ? 
+            <button type='button' id='checkout' onClick={async () => {
+                await checkout(cart[0].orderId, loginToken)
+                setCart(await getUserCart(loginToken))
+                alert('cart checked out!')
+            }}>checkout</button>
+            : null}
         </div>
     )
 }
