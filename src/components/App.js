@@ -11,20 +11,27 @@ const App = () => {
   const [ isLoggedIn, setIsLoggedIn ] = useState(false)
   const [ loginToken, setLoginToken ] = useState('')
   const [ globalUserId, setGlobalUserId ] = useState('')
-
+  const [username, setUsername] = useState("")
+  const [password, setPassword] = useState("")
 
   return (
     <BrowserRouter>
       <div className="App">
         <h1>Hello, World!</h1>
-        <Nav />
+        <Nav setIsLoggedIn={setIsLoggedIn} setLoginToken={setLoginToken} setUsername={setUsername} setPassword={setPassword} isLoggedIn={isLoggedIn} />
         <Route path='/login'>
-          <Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setLoginToken={setLoginToken} setGlobalUserId={setGlobalUserId}/>
+          <Login username={username} setUsername={setUsername} password={password} setPassword={setPassword} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setLoginToken={setLoginToken} setGlobalUserId={setGlobalUserId}/>
         </Route>
         <Route path='/myorders'>
-          <Orders loginToken={loginToken} globalUserId={globalUserId}/>
+          { isLoggedIn ? 
+            <><Orders loginToken={loginToken} globalUserId={globalUserId}/></>
+            :
+            <h1>YOU MUST BE LOGGED IN TO VIEW THIS PAGE!</h1>
+          }
         </Route>
-        <ProductPage/>
+        <Route exact path='/'>
+          <ProductPage/>
+        </Route>
       </div>
     </BrowserRouter>
   );
