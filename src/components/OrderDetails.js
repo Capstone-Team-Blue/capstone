@@ -2,8 +2,6 @@ import React from "react"
 
 const OrderDetails = (props) => {
     const { loginToken, myOrders, selectedOrder } = props
-    
-    console.log('selectedOrder:', myOrders[selectedOrder])
 
     let totalCost = 0
 
