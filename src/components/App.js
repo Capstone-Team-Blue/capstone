@@ -4,7 +4,9 @@ import Login from './Login'
 import Nav from './Nav'
 import Orders from './Orders'
 import ProductPage from './ProductPage';
+import logo from '../assets/logo.png';
 ;
+
 
 
 const App = () => {
@@ -16,7 +18,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <div className="App">
-        <h1>Hello, World!</h1>
+        <a href="http://localhost:3000/"><img className='logo' src={logo} /></a>
         <Nav />
         <Route path='/login'>
           <Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setLoginToken={setLoginToken} setGlobalUserId={setGlobalUserId}/>
@@ -24,7 +26,9 @@ const App = () => {
         <Route path='/myorders'>
           <Orders loginToken={loginToken} globalUserId={globalUserId}/>
         </Route>
-        <ProductPage/>
+        <Route exact path='/'>
+          <ProductPage className='product-page'/>
+        </Route>
       </div>
     </BrowserRouter>
   );

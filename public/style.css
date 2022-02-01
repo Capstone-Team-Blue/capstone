@@ -146,6 +146,9 @@ form > *:not(:last-child){
   flex-wrap: wrap;
   font-family: 'Open Sans', sans-serif;
   align-items:flex-start;
-  padding: 1rem 0;
+  padding: 1rem 3rem;
   flex: 1;
+}
+.logo {
+  height: 150px
 }
