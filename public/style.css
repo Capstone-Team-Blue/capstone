@@ -54,13 +54,27 @@ form > *:not(:last-child){
     justify-content: space-evenly;
 }
 
-#singleCartItem{
-  border: 2px solid black;
-  width: 50%;
+.singleCartItem{
   margin: 10px;
   padding: 10px;
+  margin-bottom: 20px;
 }
 
-ul{
-  list-style: none;
+.cartItems{
+  border: 2px, solid, black;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+input{
+  border: 2px, solid, black;
+}
+
+#orderNumber{
+  margin-right: 20px;
+}
+
+#productNumber{
+  margin-right: 20px;
 }

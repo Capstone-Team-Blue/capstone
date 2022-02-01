@@ -87,7 +87,7 @@ export async function getUserCart(token) {
 
 export async function updateQuantity(quantity, orderId, token){
   try{
-    const response = await fetch(`${BASE_URL}/orders_products/${orderId}`, {
+    const response = await fetch(`${BASE_URL_TEST}/orders_products/${orderId}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -98,11 +98,50 @@ export async function updateQuantity(quantity, orderId, token){
       })
     })
 
-    const data = response.json()
-    
+    const data = await response.json()
+
     return data
 
   } catch (error){
     throw error
   }
+}
+
+export async function checkout(orderId, token){
+  try{
+    const response = await fetch(`${BASE_URL_TEST}/orders/checkout/${orderId}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      }
+    })
+
+    const data = await response.json()
+
+    return data
+
+  } catch(error){
+    throw error
+  }
+}
+
+export async function removeFromCart(orderId, token){
+  try {
+    const response = await fetch(`${BASE_URL_TEST}/orders_products/${orderId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      }
+    })
+
+    const data = await response.json()
+
+    return data
+    
+  } catch (error) {
+    throw error
+  }
+
 }
