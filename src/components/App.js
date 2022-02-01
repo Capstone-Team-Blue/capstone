@@ -19,7 +19,7 @@ const App = () => {
       <div className="App">
         <h1>Hello, World!</h1>
         <Nav setIsLoggedIn={setIsLoggedIn} setLoginToken={setLoginToken} setUsername={setUsername} setPassword={setPassword} isLoggedIn={isLoggedIn} />
-        <a href="http://localhost:3000/"><img className='logo' src={logo} /></a>
+        <Link to="/"><img className='logo' src={logo} /></Link>
         <Route path='/login'>
           <Login username={username} setUsername={setUsername} password={password} setPassword={setPassword} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setLoginToken={setLoginToken} setGlobalUserId={setGlobalUserId}/>
         </Route>
