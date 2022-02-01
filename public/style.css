@@ -5,9 +5,13 @@
     margin: 0;
   }
 
+  #root {
+    background-color: #ececec;
+  }
+
 .linkButton {
-  background-color: blue;
-  color: white;
+  background-color: rgb(255, 255, 255);
+  color: black;
   border-radius: 100px;
   padding: 5px;
   margin-left: 10px;
@@ -157,6 +161,7 @@ input{
 }
 
 .product-card {
+  background-color: #fff;
   margin: 20px;
   padding: 10px;
   height: 18rem;
