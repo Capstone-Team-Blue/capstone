@@ -158,6 +158,9 @@ input{
 
 .product-card {
   margin: 20px;
+  padding: 10px;
+  height: 18rem;
+  width: 9rem;
   border: 1px solid black;
   display: flex;
   flex-direction: column;
@@ -176,4 +179,14 @@ input{
 }
 .logo {
   height: 150px
+}
+
+.header {
+  padding-right: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+  background-color: black;
+
 }
