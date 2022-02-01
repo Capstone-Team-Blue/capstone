@@ -5,6 +5,7 @@ import Nav from './Nav'
 import Orders from './Orders'
 import ProductPage from './ProductPage';
 import logo from '../assets/logo.png';
+import Cart from './Cart'
 ;
 
 
