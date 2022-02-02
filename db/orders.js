@@ -81,6 +81,7 @@ async function getCart(userId){
         const {rows: orders} = await client.query(`
             SELECT * FROM orders
             JOIN orders_products ON orders.id = orders_products."orderId"
+            JOIN products ON orders_products."productId" = products.id
             WHERE "userId"=$1 AND "isCart" = 'true';
         `, [userId])
 
