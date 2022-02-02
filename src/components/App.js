@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import {BrowserRouter, Route, Link, Routes} from 'react-router-dom'
+import React, { useState } from 'react';
+import {BrowserRouter, Route } from 'react-router-dom'
 import Login from './Login'
 import Header from './Header'
 import Orders from './Orders'
 import ProductPage from './ProductPage'
 import Cart from './Cart'
-
 
 const App = () => {
   const [ isLoggedIn, setIsLoggedIn ] = useState(false)

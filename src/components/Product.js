@@ -3,10 +3,10 @@ import React from 'react';
 const Product = (props) => {
   return (
     <div className='product-card'>
-      
+      <img src={process.env.PUBLIC_URL+`/assets/${props.data.image}`} width='120px' height='120px'/>
       <h3>{props.data.name}</h3>
       <p>{props.data.description}</p>
-      <h4>${props.data.price}</h4>
+      <h4>${props.data.price/100}</h4>
     </div>
   )
 }

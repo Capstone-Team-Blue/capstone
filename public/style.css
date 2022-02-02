@@ -168,20 +168,6 @@ input{
   margin-right: 20px;
 }
 
-.product-card {
-  background-color: #fff;
-  margin: 20px;
-  padding: 10px;
-  height: 18rem;
-  width: 9rem;
-  border: 1px solid black;
-  display: flex;
-  flex-direction: column;
-  flex: 1 0 .1rem;
-  margin: 0 12px 12px 0;
-  box-shadow: 0 3px 5px -2px black;
-}
-
 .product-list {
   display: flex;
   flex-wrap: wrap;
@@ -189,6 +175,20 @@ input{
   align-items:flex-start;
   padding: 1rem 3rem;
   flex: 1;
+}
+
+.product-card {
+  background-color: #fff;
+  margin: 20px;
+  padding: 10px;
+  height: 400px;
+  width: 1000px;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 .1rem;
+  margin: 0 12px 12px 0;
+  box-shadow: 0 3px 5px -2px black;
 }
 .logo {
   height: 150px
