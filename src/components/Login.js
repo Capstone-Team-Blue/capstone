@@ -82,6 +82,7 @@ const Login = (props) => {
                             setPasswordRegister('')
                             setEmail('')
                             setAddress('')
+                            handleSubmit()
                         }
                         else {
                             setIsLoggedIn(false)
