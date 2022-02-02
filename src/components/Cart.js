@@ -32,7 +32,7 @@ const Cart = (props) => {
             <h1>Your Cart</h1>
 
             { cart.length ? cart.map((el, index) => (
-                <SingleCart key={index} setCart={setCart} loginToken={loginToken} el={el} index={index}/>
+                <SingleCart key={index} cart={cart} setCart={setCart} loginToken={loginToken} el={el} index={index}/>
             )) : null }
 
             {cart.length ?

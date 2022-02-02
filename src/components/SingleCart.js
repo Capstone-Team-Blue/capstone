@@ -3,7 +3,7 @@ import { getUserCart, updateQuantity, removeFromCart } from '../api'
 
 const SingleCart = (props) => {
 
-    const {setCart, loginToken, el} = props
+    const {cart, setCart, loginToken, el} = props
     const [quantity, setQuantity] = useState(el.quantity)
 
     return(
@@ -16,9 +16,7 @@ const SingleCart = (props) => {
                 <form className='CartForm' onSubmit={async (event) => {
                     event.preventDefault()
                     try{
-                        let test = await updateQuantity(quantity, el.orderId, loginToken)
-                        console.log(test)
-                        console.log(el)
+                        await updateQuantity(quantity, el.id, loginToken)
                         setCart(await getUserCart(loginToken))
                     } catch (error){
                         console.log(error)
