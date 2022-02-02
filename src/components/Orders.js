@@ -16,8 +16,6 @@ const Orders = (props) => {
         getAllMyOrders(loginToken, globalUserId)
     }, [])
 
-    console.log('myOrders:', myOrders)
-
     return (
         <div id="ordersContainer">
             <OrdersList loginToken={loginToken} setSelectedOrder={setSelectedOrder} myOrders={myOrders}/>

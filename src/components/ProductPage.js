@@ -8,9 +8,8 @@ const ProductPage = () => {
 
   useEffect(() => {
     async function fetchProducts() {
-      const response = await fetch('https://calm-fjord-72273.herokuapp.com/api/products');
+      const response = await fetch('http://localhost:4000/api/products');
       const data = await response.json();
-      console.log(data);
       setProducts(data)
     }
     fetchProducts();
@@ -25,3 +24,6 @@ const ProductPage = () => {
 }
 
 export default ProductPage;
+
+// http://localhost:4000/api
+// https://calm-fjord-72273.herokuapp.com/api/products
