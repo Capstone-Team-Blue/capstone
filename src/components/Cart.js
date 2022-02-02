@@ -5,7 +5,9 @@ import SingleCart from './SingleCart'
 const Cart = (props) => {
     const { loginToken } = props
     const [ cart, setCart ] = useState([])
-    let total = 0
+    const costs = []
+    let totalCost = 0
+    // let total = 0
 
     useEffect(() => {
         async function getCurrentCart(loginToken){
@@ -14,31 +16,33 @@ const Cart = (props) => {
             }
         }
         getCurrentCart(loginToken)
-    }, [loginToken, total])
+    }, [loginToken])
 
-    function getTotalCost(total){
-        if(cart.length){
-            cart.map((el) => {
-                total = total + el.quantity*el.unitCost
-            })
-            return total = total/100
-        }
-    }
+    // function getTotalCost(total){
+    //     if(cart.length){
+    //         cart.map((el) => {
+    //             total = total + el.quantity*el.unitCost
+    //         })
+    //         return total = total/100
+    //     }
+    // }
 
-    total = getTotalCost(total)
+    // total = getTotalCost(total)
 
     return (
         <div id='cart'>
             <h1>Your Cart</h1>
 
             { cart.length ? cart.map((el, index) => (
-                <SingleCart key={index} cart={cart} setCart={setCart} loginToken={loginToken} el={el} index={index}/>
+                <SingleCart key={index} costs={costs} setCart={setCart} loginToken={loginToken} el={el} index={index}/>
             )) : null }
 
             {cart.length ?
             <div id='totalCost'>
                 <h4>Cart Total:</h4>
-                <p>$ {total}</p>
+                {costs.map((el) => {totalCost += el})}
+                <p>$ {totalCost}</p>
+                {console.log('TOTAL COST:', totalCost)}
             </div>
             : null}
             {cart.length ? 

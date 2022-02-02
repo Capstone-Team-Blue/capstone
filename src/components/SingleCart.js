@@ -1,10 +1,15 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { getUserCart, updateQuantity, removeFromCart } from '../api'
 
 const SingleCart = (props) => {
 
-    const {cart, setCart, loginToken, el} = props
+    const {costs, setCart, loginToken, el} = props
     const [quantity, setQuantity] = useState(el.quantity)
+
+    useEffect(() => {
+        costs.push(el.unitCost * quantity)
+        console.log(costs)
+    }, [])
 
     return(
         <div id='singleCartItem'>
