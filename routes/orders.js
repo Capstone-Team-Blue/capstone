@@ -21,11 +21,8 @@ ordersRouter.get('/me', requireLogin, async (req, res, next) => {
 })
 
 ordersRouter.get('/cart', requireLogin, async (req, res, next) => {
-    console.log('in the route')
     try{
-        console.log("in the try")
         const cart = await getCart(req.user.id)
-        console.log("got cart")
         if(!cart){
             res.send('nothing here yet!')
         }

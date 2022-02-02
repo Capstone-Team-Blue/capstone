@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { checkout, getUserCart, updateQuantity, removeFromCart } from '../api'
+import { checkout, getUserCart } from '../api'
+import SingleCart from './SingleCart'
 
 const Cart = (props) => {
     const { loginToken } = props
@@ -13,7 +14,7 @@ const Cart = (props) => {
             }
         }
         getCurrentCart(loginToken)
-    }, [loginToken])
+    }, [loginToken, total])
 
     function getTotalCost(total){
         if(cart.length){
@@ -25,45 +26,15 @@ const Cart = (props) => {
     }
 
     total = getTotalCost(total)
-    console.log(cart)
 
     return (
         <div id='cart'>
             <h1>Your Cart</h1>
-            <div id='singleCartItem'>
-                { cart.length ? cart.map((el, index) => (
-                    <div key={index} className='cartItems'>
-                        <h3 id='orderNumber'>Order number: {el.orderId}</h3>
-                        <h4 id='productNumber'>Product: {el.name}</h4>
-                        <p>Price per unit: $ {el.unitCost/100}</p>
-                        <p>Quantity: {el.quantity}</p>
-                        <form className='CartForm' onSubmit={async (event) => {
-                            event.preventDefault()
-                            try{
-                                let updateItem = document.getElementById(el.id)
-                                await updateQuantity(updateItem.value, updateItem.id, loginToken)
-                                setCart(await getUserCart(loginToken))
-                                updateItem.value = ''
-                            } catch (error){
-                                console.log(error)
-                            }
-                        }}>
-                            <input id={el.id}
-                                type='number'
-                                min='1'
-                                step='1'
-                                placeholder='quantity'
-                            ></input>
-                            <button type='submit' id='quantityButton'>Update Cart</button>
-                            <button type='button' id='deleteFromCart' onClick={async () => {
-                                await removeFromCart(el.id, loginToken)
-                                setCart(await getUserCart(loginToken))
-                                }}>Remove</button>
-                        </form>
-                    </div>
-                )) : null }
 
-            </div>
+            { cart.length ? cart.map((el, index) => (
+                <SingleCart key={index} setCart={setCart} loginToken={loginToken} el={el} index={index}/>
+            )) : null }
+
             {cart.length ?
             <div id='totalCost'>
                 <h4>Cart Total:</h4>
