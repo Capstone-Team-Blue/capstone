@@ -95,7 +95,9 @@ ordersRouter.get('/myorders/:userId', requireLogin, async (req, res, next) => {
     const { userId } = req.params
     try {
         const orders = await getOrdersAndProductsByUserId(userId)
-        if (req.user.id !== orders[0].userId) {
+        if (!orders[0]) {
+            res.send(orders)
+        } else if (req.user.id !== orders[0].userId) {
             res.status(401)
             next({
                 name: 'NotOwnerError',
