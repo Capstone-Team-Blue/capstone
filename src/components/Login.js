@@ -10,6 +10,8 @@ const Login = (props) => {
     const [passwordRegister, setPasswordRegister] = useState("")
     const [email, setEmail] = useState("")
     const [address, setAddress] = useState("")
+    const [loginMessage, setLoginMessage] = useState("")
+    const [registerMessage, setRegisterMessage] = useState("")
 
     const history = useHistory()
 
@@ -20,7 +22,8 @@ const Login = (props) => {
     return (
         <div className='formContainer'>
             <div id='loginForm'>
-                <h3>Login</h3>
+                <h5>{loginMessage}</h5>
+                <h3>Login</h3> 
                 <form className='loginRegister' onSubmit={async (event) => {
                     event.preventDefault()
                     try {
@@ -34,6 +37,7 @@ const Login = (props) => {
                             handleSubmit()
                         }
                         else {
+                            setLoginMessage('Please check your username or password and try logging in again')
                             setIsLoggedIn(false)
                         }
                     } catch (err) {
@@ -69,6 +73,7 @@ const Login = (props) => {
             </div>
 
             <div id='registerForm'>
+                <h5>{registerMessage}</h5>
                 <h3>Register</h3>
                 <form className='loginRegister' onSubmit={async (event) => {
                     event.preventDefault()
@@ -85,6 +90,7 @@ const Login = (props) => {
                             handleSubmit()
                         }
                         else {
+                            setRegisterMessage('Your email or username may already be in use')
                             setIsLoggedIn(false)
                         }
                     } catch (err) {
