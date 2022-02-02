@@ -4,7 +4,6 @@ import { checkout, getUserCart, updateQuantity, removeFromCart } from '../api'
 const Cart = (props) => {
     const { loginToken } = props
     const [ cart, setCart ] = useState([])
-    const [nothing, setNothing] = useState('')
     let total = 0
 
     useEffect(() => {
@@ -17,9 +16,6 @@ const Cart = (props) => {
     }, [loginToken])
 
     function getTotalCost(total){
-        if(nothing){
-            console.log(nothing)
-        }
         if(cart.length){
             cart.map((el) => {
                 total = total + el.quantity*el.unitCost
