@@ -19,9 +19,12 @@ const OrdersList = (props) => {
         <div id='ordersListContainer'>
             <h2>Orders List</h2>
             <div>
-                {myOrders ? myOrders.map((el, idx) => (
+                {myOrders[0] ? myOrders.map((el, idx) => (
                     <div id={idx} className='ordersListItem' key={idx}>Order id#: {el.id}</div>
-                )) : undefined}
+                )) 
+                : 
+                <div className="ordersListItem">No orders yet!</div>
+                }
             </div>
         </div>
         :
