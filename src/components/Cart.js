@@ -6,7 +6,6 @@ const Cart = (props) => {
     const { loginToken } = props
     const [ cart, setCart ] = useState([])
     const [costsCalc, setCostsCalc] = useState([])
-    const [ productImage, setProductImage ] = useState([])
     let totalCost = 0
 
     useEffect(() => {
@@ -15,9 +14,6 @@ const Cart = (props) => {
                 setCart(await getUserCart(loginToken))
                 setCostsCalc(await getUserCart(loginToken))
             }
-            const response = await fetch('http://localhost:4000/api/products');
-            const data = await response.json();
-            setProductImage(data)
         }
         getCurrentCart(loginToken)
     }, [loginToken])
@@ -33,7 +29,7 @@ const Cart = (props) => {
             <h1>Your Cart</h1>
 
             { cart.length ? cart.map((el, index) => (
-                <SingleCart key={index} setCart={setCart} loginToken={loginToken} el={el} index={index} setCostsCalc={setCostsCalc} productImage={productImage}/>
+                <SingleCart key={index} setCart={setCart} loginToken={loginToken} el={el} index={index} setCostsCalc={setCostsCalc}/>
             )) : null }
 
             {cart.length ?

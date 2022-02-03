@@ -3,10 +3,8 @@ import { getUserCart, updateQuantity, removeFromCart } from '../api'
 
 const SingleCart = (props) => {
 
-    const {setCart, loginToken, el, setCostsCalc, productImage} = props
+    const {setCart, loginToken, el, setCostsCalc} = props
     const [quantity, setQuantity] = useState(el.quantity)
-
-    console.log(productImage)
 
     return(
         <div id='singleCartItem'>
