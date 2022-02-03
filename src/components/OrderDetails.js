@@ -28,7 +28,12 @@ const OrderDetails = (props) => {
                                 <div>Product Total Cost: ${(el.quantity * el.unitCost)/100}</div>
                             </div>
                         </div>
-                    )) : undefined}
+                    )) 
+                    : 
+                    <div className="orderDetailsItem" style={{borderBottom: "none"}}>
+                        <h3>Select an order from the list to view the details for that order.</h3>
+                    </div>
+                    }
                 </div>
                 {selectedOrder ? <div id='orderDetailTotalCost'><h3>Selected Order Total Cost: ${totalCost}</h3></div> : undefined }
             </div>
