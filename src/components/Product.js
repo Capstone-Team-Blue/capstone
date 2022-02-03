@@ -1,21 +1,26 @@
 import React from 'react';
+import {Link} from 'react-router-dom'
 import { addToCart } from '../api';
 
-const Product = (props) => {
-  const {loginToken} = props
+const Product = ({product}) => {
+  let price = product.price / 100;
+
   return (
     <div className='product-card'>
-      <img src={process.env.PUBLIC_URL+`/assets/${props.data.image}`} alt='product' width='120px' height='120px'/>
-      <h3>{props.data.name}</h3>
-      <p>{props.data.description}</p>
-      <h4>${props.data.price/100}</h4>
-      {/* { loginToken ? */}
-      <button type='button' id='addToCart' onClick={async () => {
+      <Link to={`/${product.id}`}>
+        <img src={process.env.PUBLIC_URL+`/assets/${product.image}`} width='120px' height='120px'/>
+        <h3>{product.name}</h3>
+        <p>{product.description}</p>
+        <h4>${price}</h4>
+        {/* { loginToken ? */}
+        <button type='button' id='addToCart' onClick={async () => {
               const test = await addToCart(loginToken, props.data.id, 1, props.data.price)
               console.log(test)
               alert('item added!')
             }}>add to cart</button>
-      {/* // : null} */}
+        {/* // : null} */}
+        <h2>View</h2>
+      </Link>
     </div>
   )
 }

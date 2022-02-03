@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {BrowserRouter, Route } from 'react-router-dom'
 import Login from './Login'
 import Header from './Header'
 import Orders from './Orders'
 import ProductPage from './ProductPage'
 import Cart from './Cart'
+import SingleProduct from './SingleProduct';
 
 const App = () => {
   const [ isLoggedIn, setIsLoggedIn ] = useState(false)
@@ -12,6 +13,16 @@ const App = () => {
   const [ globalUserId, setGlobalUserId ] = useState('')
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    async function fetchProducts() {
+      const response = await fetch('https://calm-fjord-72273.herokuapp.com/api/products');
+      const data = await response.json();
+      setProducts(data)
+    }
+    fetchProducts();
+  }, [])
 
   return (
     <BrowserRouter>
@@ -31,7 +42,10 @@ const App = () => {
           <Cart globalUserId={globalUserId} loginToken={loginToken}/>
          </Route>
         <Route exact path='/'>
-          <ProductPage className='product-page' loginToken={loginToken}/>
+          <ProductPage className='product-page' products={products}/>
+        </Route>
+        <Route exact path='/:productId'>
+          <SingleProduct className='single-product-page' products={products}/>
         </Route>
       </div>
     </BrowserRouter>
