@@ -27,9 +27,6 @@ const App = () => {
             <h1>YOU MUST BE LOGGED IN TO VIEW THIS PAGE!</h1>
           }
         </Route>
-        <Route exact path='/'>
-          <ProductPage/>
-        </Route>
         <Route path='/cart'>
           <Cart globalUserId={globalUserId} loginToken={loginToken}/>
          </Route>
