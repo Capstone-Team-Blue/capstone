@@ -3,8 +3,9 @@ import ProductList from './ProductList';
 
 
 
-const ProductPage = () => {
+const ProductPage = (props) => {
   const [products, setProducts] = useState([]);
+  const {loginToken} = props
 
   useEffect(() => {
     async function fetchProducts() {
@@ -17,7 +18,7 @@ const ProductPage = () => {
 
   return (
     <div>
-      <ProductList products={products}/>
+      <ProductList products={products} loginToken={loginToken}/>
     </div>
   )
 

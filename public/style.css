@@ -242,3 +242,11 @@ button:active {
 #totalCost{
   margin-left: 50px;
 }
+
+#addToCart{
+  margin-top: 20px;
+  background: black;
+  color: white;
+  border-radius: 100px;
+  padding: 5px;
+}
