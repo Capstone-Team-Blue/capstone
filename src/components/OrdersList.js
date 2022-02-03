@@ -14,8 +14,6 @@ const OrdersList = (props) => {
         }
     }, [myOrders])
 
-    console.log(myOrders)
-
     return (
         loginToken ? 
         <div id='ordersListContainer'>
