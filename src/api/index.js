@@ -1,5 +1,5 @@
 const BASE_URL = 'https://calm-fjord-72273.herokuapp.com/api'
-// const BASE_URL_TEST = 'http://localhost:4000/api'
+//const BASE_URL_TEST = 'http://localhost:4000/api'
 
 export async function loginUser(username, password) {
     try{
@@ -144,4 +144,63 @@ export async function removeFromCart(orderId, token){
     throw error
   }
 
+}
+
+export async function addToCart(token, productId, quantity, unitCost){
+  try{
+    const userCart = await getUserCart(token)
+
+    if(!userCart){
+      const response = await fetch(`${BASE_URL}/orders/create`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
+        }
+      })
+      const data = await response.json()
+
+      const orderId = data.id
+      const response2 = await fetch(`${BASE_URL}/orders_products/create`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
+        },
+        body: JSON.stringify({
+          orderId: orderId,
+          productId: productId,
+          quantity: quantity,
+          unitCost: unitCost
+        })
+      })
+
+      const data2 = await response2.json()
+
+      return data2.push(data)
+    }
+    else{
+
+      const orderId = userCart[0].orderId
+      const response3 = await fetch(`${BASE_URL}/orders_products/create`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
+        },
+        body: JSON.stringify({
+          orderId: orderId,
+          productId: productId,
+          quantity: quantity,
+          unitCost: unitCost
+        })
+      })
+
+      const data = response3.json()
+
+      return data
+    }
+  } catch (error){
+    throw error
+  }
 }
