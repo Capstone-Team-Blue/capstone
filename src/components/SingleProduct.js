@@ -7,11 +7,10 @@ const SingleProduct = (props) => {
 
   useEffect(() => {
     async function fetchProduct(id) {
-      const response = await fetch('https://calm-fjord-72273.herokuapp.com/api/:productId');
+      const response = await fetch(`https://calm-fjord-72273.herokuapp.com/api/products/${productId}`);
       const data = await response.json();
-      const {name, price, image, description} = data;
       console.log(data);
-      setProduct({id, name, price, image, description});
+      setProduct(data);
     }
     // const id = window.location.pathname.split("/");
     fetchProduct(productId);
