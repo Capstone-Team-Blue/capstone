@@ -19,7 +19,7 @@ const OrderDetails = (props) => {
                 <div>
                     {selectedOrder ? 
                         myOrders[selectedOrder].products[0] ?
-                            myOrders[selectedOrder].products.forEach((el, idx) => (
+                            myOrders[selectedOrder].products.map((el, idx) => (
                                 <div className="orderDetailsItem" key={idx}>
                                     <div id='detailNameAndId'>
                                         <h3>Product Name: {el.name}</h3><div>id#: {el.productId}</div>
