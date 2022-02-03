@@ -19,7 +19,7 @@ usersRouter.post('/register', async (req, res, next) => {
         let user = await getUserByUsername(username)
         let userEmail = await getUserByEmail(email)
         if(user || userEmail){
-            res.status(401)
+            // res.status(401)
             next({
                 name: "UserAlreadyExists",
                 message: "That user already exists",
