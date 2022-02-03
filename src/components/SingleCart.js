@@ -3,21 +3,30 @@ import { getUserCart, updateQuantity, removeFromCart } from '../api'
 
 const SingleCart = (props) => {
 
+<<<<<<< HEAD
     const {setCart, loginToken, el} = props
     const [quantity, setQuantity] = useState(el.quantity)
 
+=======
+    const {setCart, loginToken, el, setCostsCalc, productImage} = props
+    const [quantity, setQuantity] = useState(el.quantity)
+
+    console.log(productImage)
+
+>>>>>>> dfbe6e6b567870d1fd827c1f6de302e28b7350d8
     return(
         <div id='singleCartItem'>
             <div className='cartItems'>
                 <h3 id='orderNumber'>Order number: {el.orderId}</h3>
                 <h4 id='productNumber'>Product: {el.name}</h4>
+                <img src={process.env.PUBLIC_URL+`/assets/${productImage.image}`} width='120px' height='120px'/>
                 <p>Price per unit: $ {el.unitCost/100}</p>
                 <p>Quantity: {quantity}</p>
                 <form className='CartForm' onSubmit={async (event) => {
                     event.preventDefault()
                     try{
                         await updateQuantity(quantity, el.id, loginToken)
-                        setCart(await getUserCart(loginToken))
+                        setCostsCalc(await getUserCart(loginToken))
                     } catch (error){
                         console.log(error)
                     }
@@ -34,6 +43,7 @@ const SingleCart = (props) => {
                     <button type='button' id='deleteFromCart' onClick={async () => {
                         await removeFromCart(el.id, loginToken)
                         setCart(await getUserCart(loginToken))
+                        setCostsCalc(await getUserCart(loginToken))
                         }}>Remove</button>
                 </form>
             </div>
