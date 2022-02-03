@@ -85,9 +85,9 @@ export async function getUserCart(token) {
   }
 }
 
-export async function updateQuantity(quantity, orderId, token){
+export async function updateQuantity(quantity, orders_productsId, token){
   try{
-    const response = await fetch(`${BASE_URL_TEST}/orders_products/${orderId}`, {
+    const response = await fetch(`${BASE_URL_TEST}/orders_products/${orders_productsId}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
