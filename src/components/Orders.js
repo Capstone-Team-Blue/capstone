@@ -14,7 +14,7 @@ const Orders = (props) => {
             setMyOrders(await getUserOrders(loginToken, globalUserId))
         }
         getAllMyOrders(loginToken, globalUserId)
-    }, [])
+    }, [loginToken, globalUserId])
 
     return (
         <div id="ordersContainer">

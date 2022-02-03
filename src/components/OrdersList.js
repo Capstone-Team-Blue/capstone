@@ -12,7 +12,7 @@ const OrdersList = (props) => {
                 })
             }
         }
-    }, [myOrders])
+    }, [myOrders, loginToken, setSelectedOrder])
 
     return (
         loginToken ? 
