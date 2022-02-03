@@ -51,7 +51,7 @@ ordersRouter.get('/orderid/:orderid', requireLogin, async (req, res, next) => {
             res.send(order)
         }
         else{
-            res.status(401)
+            // res.status(401)
             next({
                 name: "NotOwnerError",
                 message: "You must be the one who made an order to view it",
@@ -68,7 +68,7 @@ ordersRouter.patch('/checkout/:orderid', requireLogin, async (req, res, next) =>
     try{
         const order = await getOrdersByOrderId(orderid)
         if(!order){
-            res.status(401)
+            // res.status(401)
             next({
                 name: "NoOrderFound",
                 message: "No order found with that id",
@@ -79,7 +79,7 @@ ordersRouter.patch('/checkout/:orderid', requireLogin, async (req, res, next) =>
             res.send(updatedOrder)
         }
         else{
-            res.status(401)
+            // res.status(401)
             next({
                 name: "NotOwnerError",
                 message: "You must be the one who made an order to check it out",
@@ -98,7 +98,7 @@ ordersRouter.get('/myorders/:userId', requireLogin, async (req, res, next) => {
         if (!orders[0]) {
             res.send(orders)
         } else if (req.user.id !== orders[0].userId) {
-            res.status(401)
+            // res.status(401)
             next({
                 name: 'NotOwnerError',
                 message: 'You must be the one who made an order to view it'
