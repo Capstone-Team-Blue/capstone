@@ -14,13 +14,15 @@ const OrdersList = (props) => {
         }
     }, [myOrders])
 
+    console.log(myOrders)
+
     return (
         loginToken ? 
         <div id='ordersListContainer'>
             <h2>Orders List</h2>
             <div>
                 {myOrders[0] ? myOrders.map((el, idx) => (
-                    <div id={idx} className='ordersListItem' key={idx}>Order id#: {el.id}</div>
+                    el.isCart ? undefined : <div id={idx} className='ordersListItem' key={idx}>Order id#: {el.id}</div>
                 )) 
                 : 
                 <div className="ordersListItem">No orders yet!</div>
