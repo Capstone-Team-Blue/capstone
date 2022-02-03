@@ -6,7 +6,7 @@ const OrderDetails = (props) => {
     let totalCost = 0
 
     if (selectedOrder) {
-        myOrders[selectedOrder].products.map((elem) => {
+        myOrders[selectedOrder].products.forEach((elem) => {
             totalCost += elem.quantity * elem.unitCost
         })
         totalCost = totalCost/100
@@ -19,7 +19,7 @@ const OrderDetails = (props) => {
                 <div>
                     {selectedOrder ? 
                         myOrders[selectedOrder].products[0] ?
-                            myOrders[selectedOrder].products.map((el, idx) => (
+                            myOrders[selectedOrder].products.forEach((el, idx) => (
                                 <div className="orderDetailsItem" key={idx}>
                                     <div id='detailNameAndId'>
                                         <h3>Product Name: {el.name}</h3><div>id#: {el.productId}</div>
