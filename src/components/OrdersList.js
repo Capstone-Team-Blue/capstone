@@ -12,16 +12,19 @@ const OrdersList = (props) => {
                 })
             }
         }
-    }, [myOrders])
+    }, [myOrders, loginToken, setSelectedOrder])
 
     return (
         loginToken ? 
         <div id='ordersListContainer'>
             <h2>Orders List</h2>
             <div>
-                {myOrders ? myOrders.map((el, idx) => (
-                    <div id={idx} className='ordersListItem' key={idx}>Order id#: {el.id}</div>
-                )) : undefined}
+                {myOrders[0] ? myOrders.map((el, idx) => (
+                    el.isCart ? undefined : <div id={idx} className='ordersListItem' key={idx}>Order id#: {el.id}</div>
+                )) 
+                : 
+                <div className="ordersListItem">No orders yet!</div>
+                }
             </div>
         </div>
         :

@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
+import { addToCart } from '../api';
 
 const Product = ({product}) => {
   let price = product.price / 100;
@@ -11,6 +12,13 @@ const Product = ({product}) => {
         <h3>{product.name}</h3>
         <p>{product.description}</p>
         <h4>${price}</h4>
+        {/* { loginToken ? */}
+        <button type='button' id='addToCart' onClick={async () => {
+              const test = await addToCart(loginToken, props.data.id, 1, props.data.price)
+              console.log(test)
+              alert('item added!')
+            }}>add to cart</button>
+        {/* // : null} */}
         <h2>View</h2>
       </Link>
     </div>

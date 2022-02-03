@@ -12,13 +12,13 @@ ordersProductsRouter.post('/create', requireLogin, async(req, res, next) => {
     try {
         const orders = await getOrdersByOrderId(orderId)
         if (!orders) {
-            res.status(401)
+            // res.status(401)
             next({
                 name: 'OrdersNotFoundError',
                 message: 'no orders found for that orderId'
             })
         } else if (req.user.id !== orders.userId) {
-            res.status(401)
+            // res.status(401)
                 next({
                     name: 'IncorrectUserError',
                     message: 'user id and user belonging to that order do not match'
@@ -37,13 +37,13 @@ ordersProductsRouter.get('/:orderId', requireLogin, async(req, res, next) => {
     try {
         const orders = await getOrdersByOrderId(orderId)
         if (!orders) {
-            res.status(401)
+            // res.status(401)
             next({
                 name: 'OrdersNotFoundError',
                 message: 'no orders found for that orderId'
             })
         } else if (req.user.id !== orders.userId) {
-            res.status(401)
+            // res.status(401)
                 next({
                     name: 'IncorrectUserError',
                     message: 'user id and user belonging to that order do not match'
@@ -64,26 +64,26 @@ ordersProductsRouter.patch('/:id', requireLogin, async(req, res, next) => {
         const ordersProducts = await getOrdersProductsById(id)
         const orders = await getOrdersByOrderId(ordersProducts.orderId)
         if (!ordersProducts) {
-            res.status(401)
+            // res.status(401)
             next({
                 name: 'OrdersProductsNotFoundError',
                 message: 'no orders products found for that id'
             })
         } else if (!orders) {
-            res.status(401)
+            // res.status(401)
             next({
                 name: 'OrdersNotFoundError',
                 message: 'no orders found for that orderId'
             })
         } else {
             if (req.user.id !== orders.userId) {
-                res.status(401)
+                // res.status(401)
                 next({
                     name: 'IncorrectUserError',
                     message: 'user id and user belonging to that orders products do not match'
                 })
             } else if (!orders.isCart) {
-                res.status(401)
+                // res.status(401)
                 next({
                     name: 'NotCartError',
                     message: 'that orderId is not a cart and is a finished order'
@@ -103,7 +103,7 @@ ordersProductsRouter.delete('/:id', requireLogin, async(req, res, next) => {
     try {
         const ordersProducts = await getOrdersProductsById(id)
         if (!ordersProducts) {
-            res.status(401)
+            // res.status(401)
             next({
                 name: 'OrdersProductsNotFoundError',
                 message: 'no orders products found for that order id'
@@ -111,20 +111,20 @@ ordersProductsRouter.delete('/:id', requireLogin, async(req, res, next) => {
         } else {
             const orders = await getOrdersByOrderId(ordersProducts.orderId)
             if (!orders) {
-                res.status(401)
+                // res.status(401)
                 next({
                     name: 'OrdersNotFoundError',
                     message: 'no orders found for that orderId'
                 })
             } else {
                 if (req.user.id !== orders.userId) {
-                    res.status(401)
+                    // res.status(401)
                     next({
                         name: 'IncorrectUserError',
                         message: 'user id and user belonging to that orders products do not match'
                     })
                 } else if (!orders.isCart) {
-                    res.status(401)
+                    // res.status(401)
                     next({
                         name: 'NotCartError',
                         message: 'that orderId is not a cart and is a finished order'

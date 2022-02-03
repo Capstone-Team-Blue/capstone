@@ -21,11 +21,8 @@ ordersRouter.get('/me', requireLogin, async (req, res, next) => {
 })
 
 ordersRouter.get('/cart', requireLogin, async (req, res, next) => {
-    console.log('in the route')
     try{
-        console.log("in the try")
         const cart = await getCart(req.user.id)
-        console.log("got cart")
         if(!cart){
             res.send('nothing here yet!')
         }
@@ -54,7 +51,7 @@ ordersRouter.get('/orderid/:orderid', requireLogin, async (req, res, next) => {
             res.send(order)
         }
         else{
-            res.status(401)
+            // res.status(401)
             next({
                 name: "NotOwnerError",
                 message: "You must be the one who made an order to view it",
@@ -71,7 +68,7 @@ ordersRouter.patch('/checkout/:orderid', requireLogin, async (req, res, next) =>
     try{
         const order = await getOrdersByOrderId(orderid)
         if(!order){
-            res.status(401)
+            // res.status(401)
             next({
                 name: "NoOrderFound",
                 message: "No order found with that id",
@@ -82,7 +79,7 @@ ordersRouter.patch('/checkout/:orderid', requireLogin, async (req, res, next) =>
             res.send(updatedOrder)
         }
         else{
-            res.status(401)
+            // res.status(401)
             next({
                 name: "NotOwnerError",
                 message: "You must be the one who made an order to check it out",
@@ -98,14 +95,10 @@ ordersRouter.get('/myorders/:userId', requireLogin, async (req, res, next) => {
     const { userId } = req.params
     try {
         const orders = await getOrdersAndProductsByUserId(userId)
-        if (!orders) {
-            res.status(401)
-            next({
-                name: 'NoOrdersFoundError',
-                message: 'No orders were found for that userId'
-            })
+        if (!orders[0]) {
+            res.send(orders)
         } else if (req.user.id !== orders[0].userId) {
-            res.status(401)
+            // res.status(401)
             next({
                 name: 'NotOwnerError',
                 message: 'You must be the one who made an order to view it'
