@@ -11,7 +11,7 @@ const SingleCart = (props) => {
             <div className='cartItems'>
                 <h3 id='orderNumber'>Order number: {el.orderId}</h3>
                 <h4 id='productNumber'>Product: {el.name}</h4>
-                <img src={process.env.PUBLIC_URL+`/assets/${el.image}`} width='120px' height='120px'/>
+                <img src={process.env.PUBLIC_URL+`/assets/${el.image}`} alt='product' width='120px' height='120px'/>
                 <p>Price per unit: $ {el.unitCost/100}</p>
                 <p>Quantity: {quantity}</p>
                 <form className='CartForm' onSubmit={async (event) => {

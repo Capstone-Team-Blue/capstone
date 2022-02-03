@@ -1,5 +1,5 @@
 const BASE_URL = 'https://calm-fjord-72273.herokuapp.com/api'
-const BASE_URL_TEST = 'http://localhost:4000/api'
+// const BASE_URL_TEST = 'http://localhost:4000/api'
 
 export async function loginUser(username, password) {
     try{
