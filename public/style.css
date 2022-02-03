@@ -139,11 +139,11 @@ form > *:not(:last-child){
   justify-content: space-evenly;
 }
 
-.cartItems:nth-child(even) {
+#singleCartItem:nth-child(even) {
   background-color: lightskyblue;
 }
 
-.cartItems:nth-child(odd) {
+#singleCartItem:nth-child(odd) {
   background-color: lightgray;
 }
 
@@ -237,4 +237,8 @@ button:active {
   color: white;
   border-radius: 100px;
   padding: 5px;
+}
+
+#totalCost{
+  margin-left: 50px;
 }
