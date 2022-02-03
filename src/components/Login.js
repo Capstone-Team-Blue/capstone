@@ -4,7 +4,7 @@ import { loginUser, registerUser } from '../api'
 
 const Login = (props) => {
 
-    const { username, setUsername, password, setPassword, setIsLoggedIn, isLoggedIn, setLoginToken, setGlobalUserId } = props
+    const { username, setUsername, password, setPassword, setIsLoggedIn, setLoginToken, setGlobalUserId } = props
 
     const [usernameRegister, setUsernameRegister] = useState("")
     const [passwordRegister, setPasswordRegister] = useState("")

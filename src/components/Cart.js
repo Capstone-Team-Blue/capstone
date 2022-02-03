@@ -18,7 +18,7 @@ const Cart = (props) => {
         getCurrentCart(loginToken)
     }, [loginToken])
 
-    costsCalc.map((el, index) => {
+    costsCalc.forEach((el, index) => {
         if (index === 0) totalCost = 0
         totalCost += el.quantity * el.unitCost
     })
