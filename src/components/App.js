@@ -31,7 +31,7 @@ const App = () => {
           <Cart globalUserId={globalUserId} loginToken={loginToken}/>
          </Route>
         <Route exact path='/'>
-          <ProductPage className='product-page'/>
+          <ProductPage className='product-page' loginToken={loginToken}/>
         </Route>
       </div>
     </BrowserRouter>
