@@ -1,7 +1,7 @@
 import React from 'react';
 import ProductList from './ProductList';
 
-const ProductPage = ({products}) => {
+const ProductPage = ({products, loginToken}) => {
 
   return (
     <div>

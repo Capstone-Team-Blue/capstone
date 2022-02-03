@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom'
 import { addToCart } from '../api';
 
-const Product = ({product}) => {
+const Product = ({product, loginToken}) => {
   let price = product.price / 100;
 
   return (
@@ -14,7 +14,7 @@ const Product = ({product}) => {
         <h4>${price}</h4>
         {/* { loginToken ? */}
         <button type='button' id='addToCart' onClick={async () => {
-              const test = await addToCart(loginToken, props.data.id, 1, props.data.price)
+              const test = await addToCart(loginToken, product.id, 1, product.price)
               console.log(test)
               alert('item added!')
             }}>add to cart</button>
