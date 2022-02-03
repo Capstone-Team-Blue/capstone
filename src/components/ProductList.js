@@ -7,7 +7,7 @@ const ProductList = (props) => {
   return (
     <ul className='product-list'>
       {props.products.map(product => {
-        return <Product data={product} key={product.id} />;
+        return <Product product={product} key={product.id} />;
       })}
     </ul>
   );

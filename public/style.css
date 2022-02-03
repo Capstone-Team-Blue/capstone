@@ -174,7 +174,7 @@ input{
   margin: 20px;
   padding: 10px;
   height: 400px;
-  width: 1000px;
+  width: 4000px;
   border: 1px solid black;
   display: flex;
   flex-direction: column;
@@ -182,8 +182,20 @@ input{
   margin: 0 12px 12px 0;
   box-shadow: 0 3px 5px -2px black;
 }
+
+/* .product-card h2 {
+  opacity: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.product-card h2:hover {
+  opacity: 1;
+} */
+
+
 .logo {
-  height: 150px
+  height: 170px;
 }
 
 .header {
