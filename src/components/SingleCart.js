@@ -3,15 +3,17 @@ import { getUserCart, updateQuantity, removeFromCart } from '../api'
 
 const SingleCart = (props) => {
 
-    const {setCart, loginToken, el, setCostsCalc} = props
+    const {setCart, loginToken, el, setCostsCalc, productImage} = props
     const [quantity, setQuantity] = useState(el.quantity)
 
+    console.log(productImage)
 
     return(
         <div id='singleCartItem'>
             <div className='cartItems'>
                 <h3 id='orderNumber'>Order number: {el.orderId}</h3>
                 <h4 id='productNumber'>Product: {el.name}</h4>
+                <img src={process.env.PUBLIC_URL+`/assets/${productImage.image}`} width='120px' height='120px'/>
                 <p>Price per unit: $ {el.unitCost/100}</p>
                 <p>Quantity: {quantity}</p>
                 <form className='CartForm' onSubmit={async (event) => {
