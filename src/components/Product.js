@@ -18,7 +18,7 @@ const Product = ({product, loginToken, cart, setCart}) => {
       </Link>
       { loginToken ?
         <button type='button' id='addToCart' onClick={async () => {
-              const test = await addToCart(loginToken, product.id, 1, product.price)
+              await addToCart(loginToken, product.id, 1, product.price)
               alert('item added!')
             }}>add to cart</button>
         : null}
