@@ -20,7 +20,7 @@ const Cart = (props) => {
             }
         }
         getCurrentCart(loginToken)
-    }, [loginToken, guestCart, cart])
+    }, [loginToken, guestCart, cart, costsCalc])
 
 
     costsCalc.forEach((el, index) => {
