@@ -13,7 +13,8 @@ const App = () => {
   const [ globalUserId, setGlobalUserId ] = useState('')
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState([])
+  const [guestCart, setGuestCart] = useState([])
 
   useEffect(() => {
     async function fetchProducts() {
@@ -39,12 +40,12 @@ const App = () => {
           }
         </Route>
         <Route path='/cart'>
-          <Cart globalUserId={globalUserId} loginToken={loginToken}/>
+          <Cart globalUserId={globalUserId} loginToken={loginToken} guestCart={guestCart} setGuestCart={setGuestCart}/>
          </Route>
         <Route exact path='/'>
-          <ProductPage className='product-page' products={products}/>
+          <ProductPage className='product-page' loginToken={loginToken} products={products} guestCart={guestCart} setGuestCart={setGuestCart}/>
         </Route>
-        <Route exact path='/:productId'>
+        <Route exact path='/single/:productId'>
           <SingleProduct className='single-product-page' products={products}/>
         </Route>
       </div>
