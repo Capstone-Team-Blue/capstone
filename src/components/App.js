@@ -16,12 +16,12 @@ const App = () => {
   const [products, setProducts] = useState([])
   const [cart, setCart] = useState([])
 
+  async function fetchProducts() {
+    const response = await fetch('https://calm-fjord-72273.herokuapp.com/api/products');
+    const data = await response.json();
+    setProducts(data)
+  }
   useEffect(() => {
-    async function fetchProducts() {
-      const response = await fetch('https://calm-fjord-72273.herokuapp.com/api/products');
-      const data = await response.json();
-      setProducts(data)
-    }
     fetchProducts();
   }, [])
 

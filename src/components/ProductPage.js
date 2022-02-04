@@ -4,9 +4,9 @@ import ProductList from './ProductList';
 const ProductPage = ({products, loginToken, cart, setCart}) => {
 
   return (
-    <div>
-      <ProductList products={products} loginToken={loginToken} cart={cart} setCart={setCart}/>
-    </div>
+      <div className='product-page-container'>
+        <ProductList products={products} loginToken={loginToken} cart={cart} setCart={setCart}/>
+      </div>
   )
 }
 
