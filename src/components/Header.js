@@ -7,7 +7,12 @@ import Nav from "./Nav.js";
 export default function Header(props) {
   return (
     <header className="header">
-      <Link to="/"><img className='logo' src={process.env.PUBLIC_URL+"assets/logo.png"} width='270px' height='390px'/></Link>
+      <Link to="/">
+        <div>
+        <h3 className="logo-1">Grace</h3>
+        <h3 className="logo-2">$hopper</h3>
+        </div>
+      </Link>
       <Nav />
     </header>
   );
