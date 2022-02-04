@@ -20,7 +20,7 @@ const SingleProduct = (props) => {
 
   return (
     <div className="single-product-container">
-      <img src={process.env.PUBLIC_URL+`/assets/${product.image}`} width='120px' height='120px'/>
+      <img src={process.env.PUBLIC_URL+`/assets/${product.image}`} alt='product' width='120px' height='120px'/>
       <h1>{product.name}</h1>
       <p>Description: {product.description}</p>
       <h4>${price}</h4>
