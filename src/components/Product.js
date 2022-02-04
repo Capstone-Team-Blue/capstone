@@ -23,7 +23,9 @@ const Product = ({product, loginToken, guestCart, setGuestCart}) => {
 
         { !loginToken ?
         <button type='button' id='addToCart' onClick={async () => {
-              guestCart.push(product)
+              let guestCartCopy = guestCart.slice()
+              guestCartCopy.push(product)
+              setGuestCart(guestCartCopy)
               alert('item added!')
             }}>add to cart</button>
         : null}

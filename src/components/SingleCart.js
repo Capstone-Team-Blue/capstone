@@ -5,7 +5,7 @@ const SingleCart = (props) => {
 
     const {setCart, loginToken, el, index, setCostsCalc, guestCart, setGuestCart} = props
     const [quantity, setQuantity] = useState(el.quantity ? el.quantity : 1)
-    
+
     return(
         <div id='singleCartItem'>
             <div className='cartItems'>
@@ -22,7 +22,10 @@ const SingleCart = (props) => {
                             setCostsCalc(await getUserCart(loginToken))
                         }
                         else{
+                            console.log(guestCart)
                             el.quantity = quantity
+                            console.log(guestCart)
+                            setGuestCart(guestCart)
                             setCostsCalc(guestCart)
                         }
                     } catch (error){
