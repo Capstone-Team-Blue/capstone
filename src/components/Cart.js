@@ -1,26 +1,38 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { checkout, getUserCart } from '../api'
 import SingleCart from './SingleCart'
 
 const Cart = (props) => {
-    const { loginToken } = props
-    const [ cart, setCart ] = useState([])
-    const [costsCalc, setCostsCalc] = useState([])
+    const { loginToken, cart, setCart } = props
     let totalCost = 0
 
     useEffect(() => {
         async function getCurrentCart(loginToken){
             if(loginToken){
                 setCart(await getUserCart(loginToken))
-                setCostsCalc(await getUserCart(loginToken))
+            }
+            else{
+                setCart(cart)
             }
         }
         getCurrentCart(loginToken)
     }, [loginToken])
 
-    costsCalc.forEach((el, index) => {
+    useEffect(() => {
+        console.log('new cost calc: ', cart)
+    }, [cart])
+
+    cart.forEach((el, index) => {
         if (index === 0) totalCost = 0
-        totalCost += el.quantity * el.unitCost
+        if(!el.quantity) el.quantity = 1
+        if(loginToken){
+            console.log('QUANTITY FOR LOGGED IN', el.quantity)
+            totalCost += el.quantity * el.unitCost
+        }
+        else{
+            console.log('QUANTITY FOR GUEST', el.quantity)
+            totalCost += el.price * el.quantity
+        }
     })
     totalCost = totalCost/100
 
@@ -29,7 +41,7 @@ const Cart = (props) => {
             <h1>Your Cart</h1>
 
             { cart.length ? cart.map((el, index) => (
-                <SingleCart key={index} setCart={setCart} loginToken={loginToken} el={el} index={index} setCostsCalc={setCostsCalc}/>
+                <SingleCart key={index} cart={cart} setCart={setCart} loginToken={loginToken} el={el} index={index}/>
             )) : null }
 
             {cart.length ?
@@ -40,8 +52,13 @@ const Cart = (props) => {
             : null}
             {cart.length ? 
             <button type='button' id='checkout' onClick={async () => {
-                await checkout(cart[0].orderId, loginToken)
-                setCart(await getUserCart(loginToken))
+                if(loginToken){
+                    await checkout(cart[0].orderId, loginToken)
+                    setCart(await getUserCart(loginToken))
+                }
+                else{
+                    setCart([])
+                }
                 alert('cart checked out!')
             }}>checkout</button>
             : null}

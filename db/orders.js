@@ -82,7 +82,8 @@ async function getCart(userId){
             SELECT orders_products.id, orders."userId", orders."isCart", orders_products."orderId", orders_products."productId", orders_products.quantity, orders_products."unitCost", products.name, products.image FROM orders
             JOIN orders_products ON orders.id = orders_products."orderId"
             JOIN products ON orders_products."productId" = products.id
-            WHERE "userId"=$1 AND "isCart" = 'true';
+            WHERE "userId"=$1 AND "isCart" = 'true'
+            ORDER BY products.name;
         `, [userId])
 
         return orders
