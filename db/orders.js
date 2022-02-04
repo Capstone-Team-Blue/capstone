@@ -79,8 +79,9 @@ async function updateCart(id, isCart){
 async function getCart(userId){
     try{
         const {rows: orders} = await client.query(`
-            SELECT * FROM orders
+            SELECT orders_products.id, orders."userId", orders."isCart", orders_products."orderId", orders_products."productId", orders_products.quantity, orders_products."unitCost", products.name, products.image FROM orders
             JOIN orders_products ON orders.id = orders_products."orderId"
+            JOIN products ON orders_products."productId" = products.id
             WHERE "userId"=$1 AND "isCart" = 'true';
         `, [userId])
 

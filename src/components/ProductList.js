@@ -4,10 +4,11 @@ import Product from './Product';
 
 
 const ProductList = (props) => {
+  const{loginToken} = props
   return (
     <ul className='product-list'>
       {props.products.map(product => {
-        return <Product product={product} key={product.id} />;
+        return <Product product={product} key={product.id} loginToken={loginToken}/>;
       })}
     </ul>
   );

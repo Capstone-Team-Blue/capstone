@@ -5,9 +5,10 @@
     margin: 0;
   }
 
-  #root {
-    background-color: #ececec;
-  }
+#root {
+  background-color: #ececec;
+  min-height: 100vh;
+}
 
 .linkButton {
   background-color: rgb(255, 255, 255);
@@ -29,7 +30,6 @@
 }
 
 #ordersListContainer {
-  background-color: rgb(215, 238, 252);
   border: 2px solid black;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
@@ -44,10 +44,6 @@
   padding-bottom: 5px;
   border-bottom: 1px solid black;
   font-size: 1.125rem;
-}
-
-.ordersListItem:nth-child(even) {
-  background-color: lightskyblue;
 }
 
 .ordersListItem:nth-child(odd) {
@@ -68,7 +64,6 @@
 }
 
 #orderDetailsContainer {
-  background-color: rgb(215, 238, 252);
   border: 2px solid black;
   border-left: none;
   border-top-right-radius: 5px;
@@ -84,10 +79,6 @@
   font-size: 1.125rem;
   display: flex;
   justify-content: space-between;
-}
-
-.orderDetailsItem:nth-child(even) {
-  background-color: lightskyblue;
 }
 
 .orderDetailsItem:nth-child(odd) {
@@ -110,7 +101,6 @@
 }
 
 form{
-    border: 2px solid red;
     display: flex;
     flex-direction: column;
     width: 200px;
@@ -136,16 +126,25 @@ form > *:not(:last-child){
 }
 
 .singleCartItem{
-  margin: 10px;
+  margin-top: 20px;
   padding: 10px;
   margin-bottom: 20px;
+  background: rgb(83, 83, 121);
 }
 
 .cartItems{
   border: 2px, solid, black;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-evenly;
+}
+
+#singleCartItem:nth-child(even) {
+  background-color: lightskyblue;
+}
+
+#singleCartItem:nth-child(odd) {
+  background-color: lightgray;
 }
 
 input{
@@ -211,6 +210,7 @@ input{
   background-color: black;
 
 }
+
 .logo-1 {
   text-decoration: none;
   color: #fff;
@@ -222,4 +222,59 @@ input{
   color: #fff;
   margin-left: 20px;
   margin-bottom: 10px;
+
+#checkout{
+  background: black;
+  color: white;
+  border-radius: 100px;
+  padding: 5px;
+  margin: 10px;
+  height: 20%;
+  width: 20%;
+}
+
+button:active {
+  box-shadow: 0 5px rgba(85, 84, 84, 0.432);
+  transform: translateY(4px);
+}
+
+#logInButton{
+  background: rgb(14, 13, 13);
+  color: white;
+  border-radius: 100px;
+  padding: 5px;
+}
+
+#registerButton{
+  background-color: rgb(10, 10, 10);
+  color: white;
+  border-radius: 100px;
+  padding: 5px;
+}
+
+#deleteFromCart{
+  background: rgb(14, 13, 13);
+  color: white;
+  border-radius: 100px;
+  padding: 5px;
+  margin-top: 5px;
+}
+
+#quantityButton{
+  background: rgb(73, 72, 72);
+  color: white;
+  border-radius: 100px;
+  padding: 5px;
+}
+
+#totalCost{
+  margin-left: 50px;
+}
+
+#addToCart{
+  margin-top: 20px;
+  background: black;
+  color: white;
+  border-radius: 100px;
+  padding: 5px;
 }
