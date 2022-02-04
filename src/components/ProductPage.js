@@ -4,7 +4,7 @@ import ProductList from './ProductList';
 const ProductPage = ({products, loginToken}) => {
 
   return (
-    <div>
+    <div className='product-page-container'>
       <ProductList products={products} loginToken={loginToken}/>
     </div>
   )
