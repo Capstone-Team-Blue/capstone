@@ -8,7 +8,12 @@ export default function Header(props) {
 
   return (
     <header className="header">
-      <Link to="/"><img className='logo' src={process.env.PUBLIC_URL+"assets/logo.png"} alt='logo' /></Link>
+      <Link to="/">
+        <div>
+        <h3 className="logo-1">Grace</h3>
+        <h3 className="logo-2">$hopper</h3>
+        </div>
+      </Link>
       <Nav setIsLoggedIn={setIsLoggedIn} setLoginToken={setLoginToken} setUsername={setUsername} setPassword={setPassword} isLoggedIn={isLoggedIn} />
     </header>
   );
