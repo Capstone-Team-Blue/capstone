@@ -3,7 +3,7 @@ import { getUserCart, updateQuantity, removeFromCart } from '../api'
 
 const SingleCart = (props) => {
 
-    const {setCart, loginToken, el, index, setCostsCalc, guestCart, setGuestCart} = props
+    const {setCart, loginToken, el, index, cart} = props
     const [quantity, setQuantity] = useState(el.quantity ? el.quantity : 1)
 
     return(
@@ -18,15 +18,16 @@ const SingleCart = (props) => {
                     event.preventDefault()
                     try{
                         if(loginToken){
+                            console.log('BEFORE,', cart)
                             await updateQuantity(quantity, el.id, loginToken)
-                            setCostsCalc(await getUserCart(loginToken))
+                            setCart(await getUserCart(loginToken))
                         }
                         else{
-                            console.log(guestCart)
-                            el.quantity = quantity
-                            console.log(guestCart)
-                            setGuestCart(guestCart)
-                            setCostsCalc(guestCart)
+                            console.log('BEFORE,', cart)
+                            let cartCopy2 = cart.slice()
+                            cartCopy2[index].quantity = quantity
+                            setCart(cartCopy2)
+                            console.log('AFTER', cart)
                         }
                     } catch (error){
                         console.log(error)
@@ -45,12 +46,14 @@ const SingleCart = (props) => {
                         if(loginToken){
                             await removeFromCart(el.id, loginToken)
                             setCart(await getUserCart(loginToken))
-                            setCostsCalc(await getUserCart(loginToken))
                         }
                         else{
-                            guestCart.splice(index, 1)
-                            setGuestCart(guestCart)
-                            setCostsCalc(guestCart)
+                            let cartCopy = cart.slice()
+                            console.log('CART', cart)
+                            console.log('COPY', cartCopy)
+                            cartCopy.splice(index, 1)
+                            console.log('COPY DELETE', cartCopy)
+                            setCart(cartCopy)
                         }
                         }}>Remove</button>
                 </form>

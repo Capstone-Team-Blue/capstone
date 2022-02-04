@@ -1,11 +1,11 @@
 import React from 'react';
 import ProductList from './ProductList';
 
-const ProductPage = ({products, loginToken, guestCart, setGuestCart}) => {
+const ProductPage = ({products, loginToken, cart, setCart}) => {
 
   return (
     <div>
-      <ProductList products={products} loginToken={loginToken} guestCart={guestCart} setGuestCart={setGuestCart}/>
+      <ProductList products={products} loginToken={loginToken} cart={cart} setCart={setCart}/>
     </div>
   )
 }

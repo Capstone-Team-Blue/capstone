@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom'
 import { addToCart } from '../api';
 
-const Product = ({product, loginToken, guestCart, setGuestCart}) => {
+const Product = ({product, loginToken, cart, setCart}) => {
   let price = product.price / 100;
 
   return (
@@ -23,9 +23,9 @@ const Product = ({product, loginToken, guestCart, setGuestCart}) => {
 
         { !loginToken ?
         <button type='button' id='addToCart' onClick={async () => {
-              let guestCartCopy = guestCart.slice()
-              guestCartCopy.push(product)
-              setGuestCart(guestCartCopy)
+              let cartCopy = cart.slice()
+              cartCopy.push(product)
+              setCart(cartCopy)
               alert('item added!')
             }}>add to cart</button>
         : null}

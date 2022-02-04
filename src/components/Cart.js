@@ -1,35 +1,30 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { checkout, getUserCart } from '../api'
 import SingleCart from './SingleCart'
 
 const Cart = (props) => {
-    const { loginToken, guestCart, setGuestCart } = props
-    const [ cart, setCart ] = useState([])
-    const [costsCalc, setCostsCalc] = useState([])
+    const { loginToken, cart, setCart } = props
     let totalCost = 0
 
     useEffect(() => {
         async function getCurrentCart(loginToken){
             if(loginToken){
                 setCart(await getUserCart(loginToken))
-                setCostsCalc(await getUserCart(loginToken))
             }
             else{
-                setCart(guestCart)
-                setCostsCalc(guestCart)
+                setCart(cart)
             }
         }
         getCurrentCart(loginToken)
-    }, [loginToken, guestCart])
+    }, [loginToken])
 
     useEffect(() => {
-        console.log('new cost calc: ', costsCalc)
-    }, [costsCalc])
+        console.log('new cost calc: ', cart)
+    }, [cart])
 
-    costsCalc.forEach((el, index) => {
+    cart.forEach((el, index) => {
         if (index === 0) totalCost = 0
         if(!el.quantity) el.quantity = 1
-        console.log('COST CALC OUTSIDE IF', costsCalc)
         if(loginToken){
             console.log('QUANTITY FOR LOGGED IN', el.quantity)
             totalCost += el.quantity * el.unitCost
@@ -46,7 +41,7 @@ const Cart = (props) => {
             <h1>Your Cart</h1>
 
             { cart.length ? cart.map((el, index) => (
-                <SingleCart key={index} guestCart={guestCart} setCart={setCart} setGuestCart={setGuestCart} loginToken={loginToken} el={el} index={index} setCostsCalc={setCostsCalc}/>
+                <SingleCart key={index} cart={cart} setCart={setCart} loginToken={loginToken} el={el} index={index}/>
             )) : null }
 
             {cart.length ?
@@ -62,7 +57,7 @@ const Cart = (props) => {
                     setCart(await getUserCart(loginToken))
                 }
                 else{
-                    setGuestCart([])
+                    setCart([])
                 }
                 alert('cart checked out!')
             }}>checkout</button>
