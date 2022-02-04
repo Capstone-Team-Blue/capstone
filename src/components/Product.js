@@ -8,7 +8,7 @@ const Product = ({product, loginToken}) => {
   return (
     <div className='product-card'>
       <Link to={`/${product.id}`}>
-        <img src={process.env.PUBLIC_URL+`/assets/${product.image}`} width='120px' height='120px'/>
+        <img src={process.env.PUBLIC_URL+`/assets/${product.image}`} alt='product' width='120px' height='120px'/>
         <h3>{product.name}</h3>
         <p>{product.description}</p>
         <h4>${price}</h4>
