@@ -44,7 +44,7 @@ const App = () => {
         <Route exact path='/'>
           <ProductPage className='product-page' products={products}/>
         </Route>
-        <Route exact path='/:productId'>
+        <Route exact path='/single/:productId'>
           <SingleProduct className='single-product-page' products={products}/>
         </Route>
       </div>
