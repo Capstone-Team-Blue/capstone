@@ -21,19 +21,13 @@ const Cart = (props) => {
         getCurrentCart(loginToken)
     }, [loginToken])
 
-    useEffect(() => {
-        console.log('new cost calc: ', cart)
-    }, [cart])
-
     cart.forEach((el, index) => {
         if (index === 0) totalCost = 0
         if(!el.quantity) el.quantity = 1
         if(loginToken){
-            console.log('QUANTITY FOR LOGGED IN', el.quantity)
             totalCost += el.quantity * el.unitCost
         }
         else{
-            console.log('QUANTITY FOR GUEST', el.quantity)
             totalCost += el.price * el.quantity
         }
     })

@@ -16,7 +16,6 @@ const SingleProduct = (props) => {
     async function fetchProduct(id) {
       const response = await fetch(`https://calm-fjord-72273.herokuapp.com/api/products/${productId}`);
       const data = await response.json();
-      console.log(data);
       setProduct(data);
     }
     fetchProduct(productId);

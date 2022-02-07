@@ -18,16 +18,13 @@ const SingleCart = (props) => {
                     event.preventDefault()
                     try{
                         if(loginToken){
-                            console.log('BEFORE,', cart)
                             await updateQuantity(quantity, el.id, loginToken)
                             setCart(await getUserCart(loginToken))
                         }
                         else{
-                            console.log('BEFORE,', cart)
                             let cartCopy2 = cart.slice()
                             cartCopy2[index].quantity = quantity
                             setCart(cartCopy2)
-                            console.log('AFTER', cart)
                         }
                     } catch (error){
                         console.log(error)
@@ -49,10 +46,7 @@ const SingleCart = (props) => {
                         }
                         else{
                             let cartCopy = cart.slice()
-                            console.log('CART', cart)
-                            console.log('COPY', cartCopy)
                             cartCopy.splice(index, 1)
-                            console.log('COPY DELETE', cartCopy)
                             setCart(cartCopy)
                         }
                         }}>Remove</button>
