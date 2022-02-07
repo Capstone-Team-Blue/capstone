@@ -251,7 +251,7 @@ a {
   padding: 10px 10px 0 10px;
 }
 
-.MuiCardMedia-img  {
+.MuiCardMedia-img.card-image  {
   object-fit: contain;
 }
 
