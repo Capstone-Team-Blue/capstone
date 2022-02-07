@@ -251,6 +251,10 @@ a {
   padding: 10px 10px 0 10px;
 }
 
+.MuiCardMedia-img  {
+  object-fit: contain;
+}
+
 .actions-content {
   display: flex;
 }
