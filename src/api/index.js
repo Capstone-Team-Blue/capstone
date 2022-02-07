@@ -150,7 +150,7 @@ export async function addToCart(token, productId, quantity, unitCost){
   try{
     const userCart = await getUserCart(token)
 
-    if(!userCart){
+    if(!userCart[0]){
       const response = await fetch(`${BASE_URL}/orders/create`, {
         method: "POST",
         headers: {

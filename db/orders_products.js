@@ -2,7 +2,7 @@ const client = require('./client')
 
 async function createOrdersProducts({orderId, productId, quantity, unitCost}) {
     try{
-      const {rows: [ordersProducts]} = await client.query(`
+      const {rows: ordersProducts} = await client.query(`
         INSERT INTO orders_products("orderId", "productId", quantity, "unitCost")
         VALUES ($1, $2, $3, $4)
         RETURNING *;
