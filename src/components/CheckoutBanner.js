@@ -1,4 +1,7 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
+
+
 import { Container, Typography, Button, Grid } from "@material-ui/core";
 import logo from "../logo.png";
 
@@ -11,9 +14,11 @@ const CheckoutBanner = () => {
             <Typography className="title" variant="h1">
               Press the button to shop now.
             </Typography>
-            <Button className="shopping-button" color="secondary" variant="contained" href="/">
-              Shopping
-            </Button>
+            <Link to={'/'}>
+              <Button className="shopping-button" color="secondary" variant="contained">
+                Shopping
+              </Button>
+            </Link>
           </Grid>
           <Grid className="brand" item sm={6}>
             <img src={logo} alt="Grace Shopper" height="420px" width="520px"/>

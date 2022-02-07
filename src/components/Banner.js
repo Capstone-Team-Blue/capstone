@@ -11,9 +11,6 @@ const Banner = () => {
               Welcome to Grace Shopper
             </Typography>
           </Grid>
-          {/* <Grid className="brand" item sm={6}>
-            <img src={logo} alt="Grace Shopper" height="420px" width="520px"/>
-          </Grid> */}
         </Grid>
       </Container>
     </div>
