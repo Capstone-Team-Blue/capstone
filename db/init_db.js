@@ -109,10 +109,10 @@ async function populateInitialData() {
 
 
     const productsToCreate = [
-      {name: 'car', price: 2499, description: 'its a used car', image: 'usedcar2.jpeg'},
-      {name: 'pancake', price: 1150, description: 'its a pancake', image: 'pancake.jpeg'},
-      {name: 'board game', price: 1999, description: 'board game in a box', image: 'boardgame.jpeg'},
-      {name: 'bicycle', price: 39999, description: 'fastest bicycle on the planet', image: 'bicycle.jpg'},
+      {name: 'Car', price: 2499, description: 'its a used car', image: 'usedcar2.jpeg'},
+      {name: 'Pancake', price: 1150, description: 'its a pancake', image: 'pancake.jpeg'},
+      {name: 'Board game', price: 1999, description: 'board game in a box', image: 'boardgame.jpeg'},
+      {name: 'Bicycle', price: 39999, description: 'fastest bicycle on the planet', image: 'bicycle.jpg'},
       {name: 'Forest Gump Blu-ray', price: 999, description: 'Blu-ray version of Forest Gump', image: 'forestgump.jpg'},
       {name: 'Excalibur', price: 99999, description: 'most majestic sword ever created', image: 'excalibur.jpg'},
       {name: 'Vacuum', price: 5999, description: 'sucks up dirt like it was made for it because it was', image: 'vaccum.jpg'},

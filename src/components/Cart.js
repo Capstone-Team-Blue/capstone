@@ -1,6 +1,9 @@
 import React, { useEffect } from 'react'
 import { checkout, getUserCart } from '../api'
 import SingleCart from './SingleCart'
+import CheckoutBanner from './CheckoutBanner';
+;
+
 
 const Cart = (props) => {
     const { loginToken, cart, setCart } = props
@@ -50,7 +53,7 @@ const Cart = (props) => {
                 <p>$ {totalCost}</p>
             </div>
             : null}
-            {cart.length ? 
+            {cart.length ?
             <button type='button' id='checkout' onClick={async () => {
                 if(loginToken){
                     await checkout(cart[0].orderId, loginToken)
@@ -61,7 +64,7 @@ const Cart = (props) => {
                 }
                 alert('cart checked out!')
             }}>checkout</button>
-            : null}
+            : <CheckoutBanner/>}
         </div>
     )
 }
