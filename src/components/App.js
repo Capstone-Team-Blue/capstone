@@ -6,6 +6,9 @@ import Orders from './Orders'
 import ProductPage from './ProductPage'
 import Cart from './Cart'
 import SingleProduct from './SingleProduct';
+import Footer from './Footer';
+
+
 
 const App = () => {
   const [ isLoggedIn, setIsLoggedIn ] = useState(false)
@@ -46,8 +49,9 @@ const App = () => {
           <ProductPage className='product-page' loginToken={loginToken} products={products} cart={cart} setCart={setCart}/>
         </Route>
         <Route exact path='/single/:productId'>
-          <SingleProduct className='single-product-page' products={products}/>
+          <SingleProduct className='single-product-page' loginToken={loginToken} products={products} cart={cart} setCart={setCart} />
         </Route>
+        <Footer />
       </div>
     </BrowserRouter>
   );

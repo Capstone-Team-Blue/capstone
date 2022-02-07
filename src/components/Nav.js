@@ -1,5 +1,7 @@
 import React from "react"
 import { Link } from 'react-router-dom'
+import {Button} from '@material-ui/core'
+import {ShoppingCart} from '@material-ui/icons'
 
 const Nav = (props) => {
 
@@ -15,16 +17,18 @@ const Nav = (props) => {
     return (
         <div id='navBar' style={{margin: "10px 0px"}}>
             { isLoggedIn ?
-                <><Link to="/"><button className="linkButton" onClick={logout}>Logout</button></Link></>
+                <><Link to="/"><Button className="linkButton" size="small" color="secondary"onClick={logout}>Logout</Button></Link></>
                 :
-                <><Link to="/login"><button className="linkButton">Login / Register</button></Link></>
+                <><Link to="/login"><Button className="linkButton" size="small" color="secondary">Login / Register</Button></Link></>
             }
             { isLoggedIn ?
-                <><Link to="/myorders"><button className="linkButton">My Orders</button></Link></>
+                <><Link to="/myorders"><Button className="linkButton" size="small"
+                color="secondary">My Orders</Button></Link></>
                 :
                 undefined
             }
-            <Link to="/cart"><button className="linkButton">My Cart</button></Link>
+            <Link to="/cart"><Button className="linkButton"  size="small"
+        color="secondary"><ShoppingCart /> My Cart</Button></Link>
         </div>
     )
 }

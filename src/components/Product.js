@@ -1,37 +1,73 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
 import { addToCart } from '../api';
+import {
+  Card,
+  CardMedia,
+  CardContent,
+  CardActions,
+  Typography,
+  CardActionArea,
+  Button
+} from '@material-ui/core';
+import { ShoppingCart } from "@material-ui/icons";
 
 const Product = ({product, loginToken, cart, setCart}) => {
   let price = product.price / 100;
 
   return (
-    <div className='product-card'>
+     <Card sx={{ maxWidth: 345 }}>
       <Link to={`/single/${product.id}`}>
-
-        <img src={process.env.PUBLIC_URL+`/assets/${product.image}`} alt='product' width='120px' height='120px'/>
-
-        <h3>{product.name}</h3>
-        {/* <p>{product.description}</p> */}
-        <h4>${price}</h4>
-        <h2>View</h2>
-      </Link>
-      { loginToken ?
-        <button type='button' id='addToCart' onClick={async () => {
+       <CardActionArea>
+        <CardMedia
+          component="img"
+          height="190px"
+          className='card-image'
+          image={process.env.PUBLIC_URL+`/assets/${product.image}`}
+          alt="{product.name}"
+        />
+          <CardContent className='card-content'>
+            <Typography className='title' gutterBottom variant="h5" component="h2">
+              {product.name}
+            </Typography>
+          </CardContent>
+       </CardActionArea>
+       </Link>
+       <CardActions className='actions-content'>
+         <>
+          <Typography className='price' gutterBottom variant="h5" component="h2">
+            ${price}
+          </Typography>
+             { loginToken ?
+        <Button
+        type='button'
+        className='custom-button'
+        // variant="contained"
+        size="small"
+        color="secondary"
+        onClick={async () => {
               await addToCart(loginToken, product.id, 1, product.price)
               alert('item added!')
-            }}>add to cart</button>
+            }}> <ShoppingCart/>add to cart</Button>
         : null}
 
         { !loginToken ?
-        <button type='button' id='addToCart' onClick={async () => {
+        <Button
+        type='button'
+        // variant="contained"
+        className='custom-button'
+        size="small"
+        color="secondary"
+        onClick={async () => {
               let cartCopy = cart.slice()
               cartCopy.push(product)
               setCart(cartCopy)
               alert('item added!')
-            }}>add to cart</button>
+            }}><ShoppingCart />add to cart</Button>
         : null}
-    </div>
+         </>
+      </CardActions>
+    </Card>
   )
 }
 

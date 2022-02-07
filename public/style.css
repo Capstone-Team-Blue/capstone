@@ -5,17 +5,16 @@
     margin: 0;
   }
 
-#root {
-  background-color: #ececec;
-  min-height: 100vh;
-}
+  body {
+    background-color: #ececec;
+  }
 
 .linkButton {
   background-color: rgb(255, 255, 255);
   color: black;
   border-radius: 100px;
   padding: 5px;
-  margin-left: 10px;
+  margin: 2px;
 }
 
 #ordersContainer {
@@ -159,15 +158,6 @@ input{
   margin-right: 20px;
 }
 
-.product-page-container {
-  height: 100vh;
-  background-color: #e7e7e7;
-}
-.single-product-container {
-  height: 100vh;
-  background-color: #e7e7e7;
-}
-
 .product-list {
   display: flex;
   flex-wrap: wrap;
@@ -177,30 +167,6 @@ input{
   flex: 1;
 }
 
-.product-card {
-  background-color: #fff;
-  margin: 40px;
-  padding: 10px;
-  height: 300px;
-  width: 800px;
-  /* border: 1px solid black; */
-  display: flex;
-  flex-direction: column;
-  flex: 0 0 .1rem;
-  margin: 0 12px 12px 0;
-  box-shadow: 0 3px 5px -2px black;
-}
-
-.product-card h2 {
-  opacity: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.product-card h2:hover {
-  opacity: 1;
-}
-
 .header {
   padding-right: 20px;
   display: flex;
@@ -208,7 +174,6 @@ input{
   justify-content: space-between;
   color: white;
   background-color: black;
-
 }
 
 .logo-1 {
@@ -232,11 +197,6 @@ input{
   margin: 10px;
   height: 20%;
   width: 20%;
-}
-
-button:active {
-  box-shadow: 0 5px rgba(85, 84, 84, 0.432);
-  transform: translateY(4px);
 }
 
 #logInButton{
@@ -278,4 +238,88 @@ button:active {
   color: white;
   border-radius: 100px;
   padding: 5px;
+}
+/* MUI CSS */
+a {
+  color: black;
+  text-decoration: none;
+  display: block;
+  position: relative;
+}
+
+.custom-card .card-image {
+  padding: 10px 10px 0 10px;
+}
+
+.actions-content {
+  display: flex;
+}
+
+.actions-content h2 {
+  flex-grow: 1;
+}
+
+.custom-card .custom-button:hover {
+  background-color: #e21664;
+  color: #fff;
+}
+
+/* Banner */
+
+.banner {
+  padding-top: 180px;
+  width: 100%;
+  height: 50vh;
+  display: flex;
+  align-items: center;
+  background-color: #ececec;
+  background-image: url('assets/VDayBanner.jpeg');
+  background-size: cover;
+}
+
+
+.banner .brand {
+  display: flex;
+  align-items: flex-start;
+}
+
+.banner .brand img {
+  width: 100%;
+}
+
+.banner .title {
+  font-size: 45px;
+  margin-bottom: 20px;
+  font-family: "Roboto", sans-serif;
+}
+
+
+@media (min-width: 600px) {
+  .banner .title {
+    font-size: 65px;
+  }
+}
+
+/* checkout banner */
+
+.checkout-banner {
+  padding-top: 180px;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  background-color: #ececec;
+  background-image: url('assets/VDayBanner.jpeg');
+  background-size: cover;
+}
+
+.footer {
+  width: 100%;
+  padding: 10px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  background-image: linear-gradient(to bottom right, #3f3f3f, #fff);
 }
